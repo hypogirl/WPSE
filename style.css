@@ -1,0 +1,25 @@
+.navbar {
+    position: relative;
+}
+
+.navbar-brand {
+    position: absolute;
+    left: 42.75rem;
+    margin-left: -50px;
+    display: block;
+    margin-right: 0;
+}
+
+.box {
+    border-radius: 4px;
+    padding-bottom: 13%;
+}
+ 
+.col-lg-2, .col-md-3, .col-xs-6{
+    margin-top: 30px;
+}
+
+.row {
+    margin-right: 26rem!important;
+    margin-left: 26rem!important;
+}
