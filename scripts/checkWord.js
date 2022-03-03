@@ -1,36 +1,28 @@
 function check_word(guess, answer) {
-    /*visited = dict()
-    guess_split = guess.split()
-    artist_split = artist.split()
-    squares = list()
+    visited = new Object();
+    squares = new Array();
 
-    for guess_word, artist_word in zip(guess_split, artist_split):
-        if len(guess_word) != len(artist_word):
-            return "error"
+    for (let i = 0; i < answer.length; i++) {
+        let count = 0;
+        for (const l of answer) if (l == guess[i]) count++;
+        if (guess[i] == answer[i]) {
+            count--;
+            visited[guess[i]] = count;
+            squares[i] = green;
+        }
+        else {
+            visited[guess[i]] = count;
+            squares[i] = black;
+        }
+    }
 
-    for guess_word, artist_word in zip(guess_split, artist_split):
-        visited_aux, squares_word = zip(*[((letter,artist_word.count(letter) - 1), green) if letter == real_letter else ((letter,artist_word.count(letter)), black) for letter, real_letter in zip(guess_word, artist_word)])
-        visited_aux = list(visited_aux)
-        squares_word = list(squares_word)
-        
-        for letter,count in visited_aux:
-            if letter not in visited:
-                visited[letter] = count
+    for (let i = 0; i < answer.length; i++) {
+        if (guess[i] == answer[i]) continue;
+        if (answer.includes(guess[i]) && visited[guess[i]]) {
+            squaresWord[i] = yellow;
+            visited[guess[i]]--;
+        }
+    }
 
-        for i, (letter, real_letter) in enumerate(zip(guess_word, artist_word)):
-            if letter == real_letter:
-                continue
-
-            if letter in artist and visited[letter] > 0:
-                squares_word[i] = yellow
-                visited[letter] -= 1
-
-        squares.append(str().join(squares_word))
-
-    return '  '.join(squares)
-
-    -------------------------------------PYTHON CODE I HAD WRITEN------------------------------------
-
-*/
+    return squares;
 }
-
