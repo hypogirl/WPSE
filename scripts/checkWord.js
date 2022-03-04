@@ -1,4 +1,4 @@
-function check_word(guess, answer) {
+function checkWord(guess, answer) {
     visited = new Object();
     squares = new Array();
 
