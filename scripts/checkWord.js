@@ -26,6 +26,6 @@ function checkWord(guess, answer) {
             visited[guess[i]] = visited[guess[i]] - 1;
         }
     }
-
+    
     return squares;
 }
