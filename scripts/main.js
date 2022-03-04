@@ -1,4 +1,4 @@
-var letters = 5, tries = 6, guess = "", answer = "HELLO";
+var letters = 5, tries = 6, guess = "", answer = "DOVES";
 
 function addLetter(letter) {
     let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
@@ -10,7 +10,7 @@ function addLetter(letter) {
 function removeLetter() {
     if (letters < 5) letters++;
     let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
-    letterSquare.innerHTML = "";
+    letterSquare.innerHTML = "⠀";
     guess = guess.slice(0, -1);
 }
 
