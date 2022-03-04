@@ -12,8 +12,10 @@
 }
 
 .box {
-    border-radius: 4px;
-    padding-bottom: 13%;
+    height:0px;
+    padding-left: 50%;
+    padding-bottom: 100%;
+    line-height: 3.3rem;
 }
  
 .col-lg-2, .col-md-3, .col-xs-6{
@@ -21,6 +23,23 @@
 }
 
 .row {
-    margin-right: 26rem!important;
-    margin-left: 26rem!important;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+}
+
+#rows {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+}
+
+#content {
+    width: 100%;
+    max-width: 325px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
 }
