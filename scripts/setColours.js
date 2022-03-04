@@ -1,3 +1,3 @@
-var green = True;
-var yellow = False;
+var green = true;
+var yellow = false;
 var black = null;
