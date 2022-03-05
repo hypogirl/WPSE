@@ -1,5 +1,3 @@
-var letters = 5, tries = 6, guess = "", answer = "DOVES";
-
 function addLetter(letter) {
     let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
     letterSquare.innerHTML = letter;
