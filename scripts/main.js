@@ -52,7 +52,7 @@ document.onkeydown = async () => {
         removeLetter();
     }
     else if (key == 13 && tries) {
-        if (!words.includes(guess)) {
+        if (!words.includes(guess) && !english_words.includes(guess)) {
             errorContent.classList.remove("display-none");
             errorContent.classList.add("display");
             await sleep(2000);
