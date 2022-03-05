@@ -29,6 +29,14 @@ body {
     font-size: 1.7rem;
     font-weight: 600;
 }
+
+.box, .unselectable {
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
  
 .col-lg-2, .col-md-3, .col-xs-6{
     margin-top: 30px;
