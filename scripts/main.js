@@ -1,10 +1,20 @@
-function addLetter(letter) {
+async function whiteBackground(letterSquare) {
+    letterSquare.classList.add("white-background");
+    await sleep(200);
+    letterSquare.classList.add("bg-dark");
+    await sleep(200);
+    letterSquare.classList.remove("white-background");
+    letterSquare.classList.remove("bg-dark");
+}
+
+async function addLetter(letter) {
     let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
     letterSquare.innerHTML = letter;
     guess += letter;
     letters--;
     letterSquare.classList.remove("border-secondary");
     letterSquare.classList.add("border-primary");
+    await whiteBackground(letterSquare);
     letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
 
@@ -17,15 +27,24 @@ function removeLetter() {
     letterSquare.classList.add("border-secondary");
 }
 
-function updateColours(squares) {
+async function updateColours(squares) {
     for (let i = 0; i < 5; i++) {
         square = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
-        square.style.backgroundColor = squares[i];
+        await whiteBackground(square);
+        square.style.setProperty("background-color", squares[i], "important");
         square.classList.remove("border-primary");
         square.classList.add("border-invisible");
     }
     tries--;
     letters = 5;
+}
+
+async function showErrorMessage(error) {
+    error.classList.remove("display-none");
+    error.classList.add("display");
+    await sleep(1500);
+    error.classList.add("display-none");
+    error.classList.remove("display");
 }
 
 document.onkeydown = async () => {
@@ -36,11 +55,7 @@ document.onkeydown = async () => {
 
     if (letters) {
         if (key == 13) {
-            errorLength.classList.remove("display-none");
-            errorLength.classList.add("display");
-            await sleep(2000);
-            errorLength.classList.add("display-none");
-            errorLength.classList.remove("display");
+            await showErrorMessage(errorLength);
             return;
         };
         if (key == 8)
@@ -53,11 +68,7 @@ document.onkeydown = async () => {
     }
     else if (key == 13 && tries) {
         if (!words.includes(guess) && !english_words.includes(guess)) {
-            errorContent.classList.remove("display-none");
-            errorContent.classList.add("display");
-            await sleep(2000);
-            errorContent.classList.add("display-none");
-            errorContent.classList.remove("display");
+            await showErrorMessage(errorContent);
             return;
         }
         console.log(guess, answer);
