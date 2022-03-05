@@ -6,7 +6,7 @@ const errorContent = document.getElementById("error-content");
 var letters = 5;
 var guess = new String();
 //var vars = getCookieVars();
-const answer = getAnswer();
+const answer = words[getAnswerIndex()];
 var tries;
 //if (currentDate == vars[0]) tries = vars[0];
 //else
