@@ -3,12 +3,11 @@ const yellow = "#878119";
 const black = "#495057";
 const errorLength = document.getElementById("error-length");
 const errorContent = document.getElementById("error-content");
+const uiKeys = document.getElementsByClassName("key");
 var letters = 5;
 var guess = new String();
+var keyboard = new Object();
+var tries = 6;
 //var vars = getCookieVars();
-const answer = words[getAnswerIndex()];
-var tries;
-//if (currentDate == vars[0]) tries = vars[0];
-//else
-tries = 6;
+//var tries = vars[0];
 //var stats = vars[1];
