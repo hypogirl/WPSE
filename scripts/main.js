@@ -1,10 +1,10 @@
-async function whiteBackground(letterSquare) {
-    letterSquare.classList.add("white-background");
+async function whiteBackground(squares) {
+    for (square of squares) square.classList.add("white-background");
     await sleep(200);
-    letterSquare.classList.add("bg-dark");
+    for (square of squares) square.classList.add("bg-dark");
     await sleep(200);
-    letterSquare.classList.remove("white-background");
-    letterSquare.classList.remove("bg-dark");
+    for (square of squares) square.classList.remove("white-background");
+    for (square of squares) square.classList.remove("bg-dark");
 }
 
 async function addLetter(letter) {
@@ -14,7 +14,7 @@ async function addLetter(letter) {
     letters--;
     letterSquare.classList.remove("border-secondary");
     letterSquare.classList.add("border-primary");
-    await whiteBackground(letterSquare);
+    await whiteBackground([letterSquare]);
     letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
 
@@ -27,14 +27,23 @@ function removeLetter() {
     letterSquare.classList.add("border-secondary");
 }
 
+async function inCycleUpdate(elements, colours) {
+    await whiteBackground(elements);
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].style.setProperty("background-color", colours[i], "important");
+        elements[i].classList.remove("border-primary");
+        elements[i].classList.add("border-invisible");
+    }
+}
+
 async function updateColours(squares) {
+    let keyboardElements = new Array();
     for (let i = 0; i < 5; i++) {
         square = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
-        await whiteBackground(square);
-        square.style.setProperty("background-color", squares[i], "important");
-        square.classList.remove("border-primary");
-        square.classList.add("border-invisible");
+        keyboardElements.push(keyboard[square.innerHTML])
+        await inCycleUpdate([square], [squares[i]]);
     }
+    for (let i = 0; i < 5; i++) await inCycleUpdate(keyboardElements, squares);
     tries--;
     letters = 5;
 }
@@ -47,12 +56,8 @@ async function showErrorMessage(error) {
     error.classList.remove("display");
 }
 
-document.onkeydown = async () => {
-    var key = event.keyCode || event.charCode;
-    if (key != 8 && key != 13 && (key < 65 || key > 90))
-        return;
+async function keyPressed(key) {
     let letter = String.fromCharCode(key);
-
     if (letters) {
         if (key == 13) {
             await showErrorMessage(errorLength);
@@ -60,8 +65,7 @@ document.onkeydown = async () => {
         };
         if (key == 8)
             removeLetter();
-        else
-            addLetter(letter);
+        else addLetter(letter);
     }
     else if (key == 8) {
         removeLetter();
@@ -71,15 +75,32 @@ document.onkeydown = async () => {
             await showErrorMessage(errorContent);
             return;
         }
-        console.log(guess, answer);
-        squares = checkWord(guess, answer);
+        squares = checkWord(guess, words[getAnswerIndex()]);
         guess = "";
         //if (!squares.includes(yellow) && !squares.includes(black)) victory();
         //else {
         updateColours(squares);
         //}
     }
+}
+
+document.onkeydown = async () => {
+    var key = event.keyCode || event.charCode;
+    if (key != 8 && key != 13 && (key < 65 || key > 90))
+        return;
+    await keyPressed(key);
 };
+
+async function uiKeyPressed() {
+    if (this.innerHTML == "Enter") await keyPressed(13);
+    else if (this.innerHTML == "⌫") await keyPressed(8);
+    else await keyPressed(this.innerHTML.charCodeAt());
+}
+
+for (uiKey of uiKeys) {
+    uiKey.addEventListener('click', uiKeyPressed, false);
+    keyboard[uiKey.innerHTML] = uiKey;
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
