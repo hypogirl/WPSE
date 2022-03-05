@@ -58,3 +58,19 @@ body {
     flex-direction: column;
     padding: 40px;
 }
+
+.border-primary {
+    border-color: #acacac!important;
+}
+
+.border-invisible {
+    border-color: #00000000!important;
+}
+
+.display {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
