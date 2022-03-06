@@ -1,5 +1,4 @@
 async function flashBackground(squares, backgroundClasses) {
-    console.log(squares, backgroundClasses)
     for (square of squares) square.classList.add("white-background");
     await sleep(200);
     for (let i = 0; i < squares.length; i++) {
