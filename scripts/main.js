@@ -59,6 +59,12 @@ async function showErrorMessage(error) {
     error.classList.remove("display");
 }
 
+function victory() {
+    victoryDiv = document.getElementById("victory");
+    victoryDiv.classList.remove("display-small");
+    victoryDiv.classList.add("display-big");
+}
+
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
     if (letters) {
@@ -80,10 +86,9 @@ async function keyPressed(key) {
         }
         squares = checkWord(guess, words[aIndex]);
         guess = "";
-        //if (!squares.includes(yellow) && !squares.includes(black)) victory();
-        //else {
         updateColours(squares);
-        //}
+        await sleep(2500);
+        if (!squares.includes(yellow) && !squares.includes(black)) victory();
     }
 }
 
