@@ -1,10 +1,13 @@
-async function whiteBackground(squares) {
+async function flashBackground(squares, backgroundClasses) {
+    console.log(squares, backgroundClasses)
     for (square of squares) square.classList.add("white-background");
     await sleep(200);
-    for (square of squares) square.classList.add("bg-dark");
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].classList.remove("bg-secondary");
+        squares[i].classList.add(backgroundClasses[i]);
+    }
     await sleep(200);
     for (square of squares) square.classList.remove("white-background");
-    for (square of squares) square.classList.remove("bg-dark");
 }
 
 async function addLetter(letter) {
@@ -14,7 +17,8 @@ async function addLetter(letter) {
     letters--;
     letterSquare.classList.remove("border-secondary");
     letterSquare.classList.add("border-primary");
-    await whiteBackground([letterSquare]);
+    await flashBackground([letterSquare],["bg-dark"]);
+    letterSquare.classList.remove("bg-dark")
     letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
 
@@ -27,23 +31,23 @@ function removeLetter() {
     letterSquare.classList.add("border-secondary");
 }
 
-async function inCycleUpdate(elements, colours) {
-    await whiteBackground(elements);
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].style.setProperty("background-color", colours[i], "important");
-        elements[i].classList.remove("border-primary");
-        elements[i].classList.add("border-invisible");
-    }
-}
-
-async function updateColours(squares) {
-    let keyboardElements = new Array();
+async function updateColours(colours) {
+    let keyboardElements = new Array(), keyboardColours = new Array();
     for (let i = 0; i < 5; i++) {
         square = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
-        keyboardElements.push(keyboard[square.innerHTML])
-        await inCycleUpdate([square], [squares[i]]);
+        square.classList.add("border-invisible");
+        square.classList.remove("border-secondary");
+        if (!(colours.innerHTML in keyboardElements)) {
+            keyboardElements.push(keyboard[square.innerHTML]);
+            keyboardColours.push(colours[i]);
+        }
+        else if (keyboard[square.innerHTML] != green && ((keyboard[square.innerHTML] == yellow && colours[i] != black) || keyboard[square.innerHTML] == black)) {
+            keyboardElements.push(keyboard[square.innerHTML]);
+            keyboardColours.push(colours[i]);
+        }
+        await flashBackground([square], [colours[i]]);
     }
-    for (let i = 0; i < 5; i++) await inCycleUpdate(keyboardElements, squares);
+    await flashBackground(keyboardElements, keyboardColours);
     tries--;
     letters = 5;
 }
@@ -75,7 +79,7 @@ async function keyPressed(key) {
             await showErrorMessage(errorContent);
             return;
         }
-        squares = checkWord(guess, words[getAnswerIndex()]);
+        squares = checkWord(guess, words[aIndex]);
         guess = "";
         //if (!squares.includes(yellow) && !squares.includes(black)) victory();
         //else {

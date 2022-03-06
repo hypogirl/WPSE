@@ -1,9 +1,10 @@
-const green = "#198754";
-const yellow = "#878119";
-const black = "#495057";
+const green = "green-background";
+const yellow = "yellow-background";
+const black = "dark-background";
 const errorLength = document.getElementById("error-length");
 const errorContent = document.getElementById("error-content");
 const uiKeys = document.getElementsByClassName("key");
+const aIndex = getAnswerIndex();
 var letters = 5;
 var guess = new String();
 var keyboard = new Object();
