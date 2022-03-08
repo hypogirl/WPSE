@@ -5,6 +5,7 @@ const errorLength = document.getElementById("error-length");
 const errorContent = document.getElementById("error-content");
 const uiKeys = document.getElementsByClassName("key");
 const aIndex = getAnswerIndex();
+var keyboardUsed = new Object();
 var letters = 5;
 var guess = new String();
 var keyboard = new Object();

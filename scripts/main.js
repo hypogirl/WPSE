@@ -1,11 +1,13 @@
 async function flashBackground(squares, backgroundClasses) {
     for (square of squares) square.classList.add("white-background");
     await sleep(200);
-    for (let i = 0; i < squares.length; i++) {
-        squares[i].classList.remove("bg-secondary");
-        squares[i].classList.add(backgroundClasses[i]);
+    if (backgroundClasses) {
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.remove("bg-secondary");
+            squares[i].classList.add(backgroundClasses[i]);
+        }
+        await sleep(200);
     }
-    await sleep(200);
     for (square of squares) square.classList.remove("white-background");
 }
 
@@ -16,7 +18,7 @@ async function addLetter(letter) {
     letters--;
     letterSquare.classList.remove("border-secondary");
     letterSquare.classList.add("border-primary");
-    await flashBackground([letterSquare],["bg-dark"]);
+    await flashBackground([letterSquare],null);
     letterSquare.classList.remove("bg-dark")
     letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
@@ -31,20 +33,21 @@ function removeLetter() {
 }
 
 async function updateColours(colours) {
-    let keyboardElements = new Array(), keyboardColours = new Array();
     for (let i = 0; i < 5; i++) {
         square = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
         square.classList.add("border-invisible");
         square.classList.remove("border-secondary");
-        if (!(colours.innerHTML in keyboardElements)) {
-            keyboardElements.push(keyboard[square.innerHTML]);
-            keyboardColours.push(colours[i]);
-        }
-        else if (keyboard[square.innerHTML] != green && ((keyboard[square.innerHTML] == yellow && colours[i] != black) || keyboard[square.innerHTML] == black)) {
-            keyboardElements.push(keyboard[square.innerHTML]);
-            keyboardColours.push(colours[i]);
-        }
+        if (!(square.innerHTML in keyboardUsed))
+            keyboardUsed[square.innerHTML] = colours[i]
+        else if (keyboardUsed[square.innerHTML] != green && ((keyboardUsed[square.innerHTML] == yellow && colours[i] == green) || keyboardgUsed[square.innerHTML] == black))
+            keyboardUsed[square.innerHTML] = colours[i];
         await flashBackground([square], [colours[i]]);
+    }
+    let keyboardElements = new Array();
+    let keyboardColours = new Array();
+    for ([letter, colour] of Object.entries(keyboardUsed)) {
+        keyboardElements.push(document.getElementById(letter));
+        keyboardColours.push(colour);
     }
     await flashBackground(keyboardElements, keyboardColours);
     tries--;
