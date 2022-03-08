@@ -64,6 +64,8 @@ body {
     display: flex;
     flex-direction: column;
     padding: 40px 40px 35px 40px;
+    background-repeat: round;
+    background-image: url(imgs/2.png);
 }
 
 .border-primary {
