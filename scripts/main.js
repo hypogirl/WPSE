@@ -12,7 +12,7 @@ async function flashBackground(squares, backgroundClasses) {
 }
 
 async function addLetter(letter) {
-    let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
+    let letterSquare = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
     letterSquare.innerHTML = letter;
     guess += letter;
     letters--;
@@ -20,12 +20,12 @@ async function addLetter(letter) {
     letterSquare.classList.add("border-primary");
     await flashBackground([letterSquare],null);
     letterSquare.classList.remove("bg-dark")
-    letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
+    letterSquare = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
 
 function removeLetter() {
     if (letters < 5) letters++;
-    let letterSquare = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
+    let letterSquare = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
     letterSquare.innerHTML = "⠀";
     guess = guess.slice(0, -1);
     letterSquare.classList.remove("border-primary");
@@ -34,12 +34,12 @@ function removeLetter() {
 
 async function updateColours(colours) {
     for (let i = 0; i < 5; i++) {
-        square = document.getElementById('rows').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
+        square = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
         square.classList.add("border-invisible");
         square.classList.remove("border-secondary");
         if (!(square.innerHTML in keyboardUsed))
             keyboardUsed[square.innerHTML] = colours[i]
-        else if (keyboardUsed[square.innerHTML] != green && ((keyboardUsed[square.innerHTML] == yellow && colours[i] == green) || keyboardgUsed[square.innerHTML] == black))
+        else if (keyboardUsed[square.innerHTML] != green && ((keyboardUsed[square.innerHTML] == yellow && colours[i] == green) || keyboardUsed[square.innerHTML] == black))
             keyboardUsed[square.innerHTML] = colours[i];
         await flashBackground([square], [colours[i]]);
     }
@@ -64,6 +64,7 @@ async function showErrorMessage(error) {
 
 function victory() {
     victoryDiv = document.getElementById("victory");
+    victoryDiv.classList.remove("display-none");
     victoryDiv.classList.remove("display-small");
     victoryDiv.classList.add("display-big");
 }

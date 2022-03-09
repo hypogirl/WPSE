@@ -14,18 +14,19 @@
 <body class="bg-dark">
     <nav class="navbar navbar-dark bg-dark border-bottom border-secondary">
         <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1 unselectable">Wiccle Phase Springs Eternal</span>
             <button type="button" class="btn btn-dark">Stats</button>
+            <span class="navbar-brand h1 unselectable position-absolute top-0 start-50 translate-middle-x">Wiccle Phase Springs Eternal</span>
+            <button type="button" class="btn btn-dark" onclick="settings()">Setts</button>
         </div>
     </nav>
+    <div class="position-absolute top-50 start-50 translate-middle rounded p-5 bg-dark text-light shadow-lg display-none display-small" id="settings">
+        f
+        <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+    </div>
     <div class="container mt-3 bg-dark" id="content">
         <div class="rounded border border-secondary position-absolute top-30 start-50 translate-middle bg-light text-dark p-3 display-none" id="error-content">Not a valid word.</div>
         <div class="rounded border border-secondary position-absolute top-30 start-50 translate-middle bg-light text-dark p-3 display-none" id="error-length">Not enough letters.</div>
-        <div class="rounded position-absolute top-50 start-50 translate-middle p-5 bg-dark text-light shadow-lg display-small" id="victory">
-            test
-            <div class="position-absolute top-50 start-50 translate-middle p-5">X</div>
-        </div>
-        <div class="row" id="rows">
+        <div class="row" id="guesses">
             <div class="row">
                 <div class="col box rounded border border-secondary m-1 text-light">⠀</div>
                 <div class="col box rounded border border-secondary m-1 text-light">⠀</div>
@@ -106,12 +107,17 @@
                 <div class="col rounded me-1 key bg-secondary" id="M">M</div>
                 <div class="col-2 rounded key bg-secondary" id="">⌫</div>
             </div>
+            <div class="position-absolute top-50 start-50 translate-middle rounded p-5 bg-dark text-light shadow-lg display-none display-small" id="victory">
+                test
+                <button type="button" class="btn-close-white" aria-label="Close"></button>
+            </div>
         </div>
     </div>
     <script src="scripts/magic.js"></script>
     <script src="scripts/englishDictionary.js"></script>
     <script src="scripts/setUp.js"></script>
     <script src="scripts/checkWord.js"></script>
+    <script src="buttons.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@ body {
     background: #000000;
     background-position: left top;
     background-repeat: repeat;
-    background-image: url(imgs/1.jpg);
+    background-image: url(imgs/2.jpg);
 }
 
 .bg-dark {
@@ -10,19 +10,12 @@ body {
     background-color: #181818!important;
 }
 
-.navbar {
-    position: relative;
-}
+
 
 .navbar-brand {
-    position: absolute;
-    left: 42.75rem;
-    margin-left: -50px;
-    display: block;
-    margin-right: 0;
+    margin-top: 0.6rem;
     font-family: 'Luminari', sans-serif;
 }
-
 .box {
     text-align: center;
     padding: 4.7px 0;
@@ -48,7 +41,7 @@ body {
     margin-top: 30px;
 }
 
-#rows {
+#guesses {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +49,7 @@ body {
     overflow: hidden;
     margin: 0px 35px;
 }
+
 
 #content {
     width: 100%;
@@ -65,7 +59,6 @@ body {
     flex-direction: column;
     padding: 40px 40px 35px 40px;
     background-repeat: round;
-    background-image: url(imgs/2.png);
 }
 
 .border-primary {
@@ -107,7 +100,8 @@ body {
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
-    transition: height 0.3s, width 0.3s, opacity 0.3s;
+    transition: height 0.3s, width 0.3s;
+    transition-timing-function: cubic-bezier(0.46, 0.56, 0.95, 0.53), cubic-bezier(0.57, -0.11, 0.49, 0.91);
 }
 
 .white-background {
@@ -115,25 +109,23 @@ body {
 }
 
 .dark-background {
-    background-color: #495057!important;
+    background-color: #493d42!important;
 }
 
 .green-background {
-    background-color: #198754;
+    background-color: #43945d;
 }
 
 .yellow-background {
-    background-color: #878119;
+    background-color: #624473;
 }
 
 .display-small {
-    width: 30%;
-    height: 50%;
-    opacity: 0;
+    width: 50%;
+    height: 45%;
 }
 
 .display-big {
     width: 50%;
     height: 50%;
-    opacity: 1;
 }
