@@ -69,22 +69,20 @@ body {
     border-color: #00000000!important;
 }
 
-.display {
+.opacity-0, .opacity-1 {
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
-    opacity: 1;
 }
 
-.display-none {
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
-    -ms-transition: 0.3s;
-    -o-transition: 0.3s;
-    transition: 0.3s;
+.opacity-0 {
     opacity: 0;
+}
+
+.opacity-1 {
+    opacity: 1;
 }
 
 .white-background, .dark-background, .green-background, .yellow-background{
@@ -128,4 +126,12 @@ body {
 .display-big {
     width: 50%;
     height: 50%;
+}
+
+.display-none {
+    display: none;
+}
+
+.display {
+    display: block;
 }

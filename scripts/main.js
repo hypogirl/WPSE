@@ -55,16 +55,17 @@ async function updateColours(colours) {
 }
 
 async function showErrorMessage(error) {
-    error.classList.remove("display-none");
-    error.classList.add("display");
+    error.classList.remove("opacity-0");
+    error.classList.add("opacity-1");
     await sleep(1500);
-    error.classList.add("display-none");
-    error.classList.remove("display");
+    error.classList.add("opacity-0");
+    error.classList.remove("opacity-1");
 }
 
-function victory() {
+async function victory() {
     victoryDiv = document.getElementById("victory");
     victoryDiv.classList.remove("display-none");
+    await sleep(1)
     victoryDiv.classList.remove("display-small");
     victoryDiv.classList.add("display-big");
 }
