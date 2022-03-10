@@ -1,8 +1,6 @@
 async function openSettings() {
     const settingsDiv = document.getElementById("settings");
-    const img1 = document.getElementById("img1");
-    const img2 = document.getElementById("img2");
-    const imgs = [img1,img2];
+    const imgs = document.getElementsByClassName("backgroundImg");
 
     settingsDiv.classList.remove("display-none");
     settingsDiv.classList.add("display");
@@ -18,9 +16,7 @@ async function openSettings() {
 
 async function closeSettings() {
     const settingsDiv = document.getElementById("settings");
-    const img1 = document.getElementById("img1");
-    const img2 = document.getElementById("img2");
-    const imgs = [img1,img2];
+    const imgs = document.getElementsByClassName("backgroundImg");
     
     for (img of imgs) {
         img.classList.remove("opacity-1");
@@ -32,4 +28,20 @@ async function closeSettings() {
     await sleep(500);
     settingsDiv.classList.add("display-none");
     settingsDiv.classList.remove("display");
+}
+
+async function closeVictory() {
+    const victoryDiv = document.getElementById("victory");
+    const buttons = document.getElementsByClassName("share");
+
+    for (button of buttons) {
+        button.classList.remove("opacity-1");
+        button.classList.add("opacity-0");
+    }
+    await sleep(100);
+    victoryDiv.classList.add("display-small");
+    victoryDiv.classList.remove("display-big");
+    await sleep(500);
+    victoryDiv.classList.add("display-none");
+    victoryDiv.classList.remove("display");
 }

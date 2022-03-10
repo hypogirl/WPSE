@@ -64,10 +64,17 @@ async function showErrorMessage(error) {
 
 async function victory() {
     victoryDiv = document.getElementById("victory");
+    const buttons = document.getElementsByClassName("share");
+
     victoryDiv.classList.remove("display-none");
     await sleep(1)
     victoryDiv.classList.remove("display-small");
     victoryDiv.classList.add("display-big");
+    await sleep(250);
+    for (button of buttons) {
+        button.classList.add("opacity-1");
+        button.classList.remove("opacity-0");
+    }
 }
 
 async function keyPressed(key) {
