@@ -1,6 +1,3 @@
-const green = "green-background";
-const yellow = "yellow-background";
-const black = "dark-background";
 const errorLength = document.getElementById("error-length");
 const errorContent = document.getElementById("error-content");
 const uiKeys = document.getElementsByClassName("key");
@@ -13,3 +10,10 @@ var tries = 6;
 //var vars = await getCookieVars();
 //var tries = vars[0];
 //var stats = vars[1];
+//var theme = vars[2];
+var theme = 2;
+var green = "correct-theme" + String(theme);
+var yellow = "wrongplace-theme" + String(theme);
+var black = "wrong-theme" + String(theme);
+const body = document.getElementsByTagName("body")[0];
+body.style.backgroundImage = "url(imgs/" + String(theme) + ".jpg)";

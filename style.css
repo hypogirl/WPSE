@@ -10,8 +10,6 @@ body {
     background-color: #181818!important;
 }
 
-
-
 .navbar-brand {
     margin-top: 0.6rem;
     font-family: 'Luminari', sans-serif;
@@ -85,7 +83,7 @@ body {
     opacity: 1;
 }
 
-.white-background, .dark-background, .green-background, .yellow-background{
+.white-background, .wrong-theme2, .correct-theme2, .wrongplace-theme2 {
     -webkit-transition: 0.2s;
     -moz-transition: 0.2s;
     -ms-transition: 0.2s;
@@ -106,15 +104,15 @@ body {
     background-color: #ffffff32;
 }
 
-.dark-background {
+.wrong-theme2 {
     background-color: #4a4a4a!important;
 }
 
-.green-background {
+.correct-theme2 {
     background-color: #43945d;
 }
 
-.yellow-background {
+.wrongplace-theme2 {
     background-color: #69308a;
 }
 
