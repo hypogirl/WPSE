@@ -33,7 +33,7 @@ function updateTheme(theme) {
         root.style.setProperty('--green', '#43945d');
         root.style.setProperty('--yellow', '#69308a');
         root.style.setProperty('--black', '#4a4a4a');
-        root.style.setProperty('--background', '#3a546a');
+        root.style.setProperty('--background', '#003859');
         root.style.setProperty('--text', 'white');
         root.style.setProperty('--body', 'url(imgs/2.jpg)');
     }
