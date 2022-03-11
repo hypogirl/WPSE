@@ -3,8 +3,8 @@ async function flashBackground(squares, backgroundClasses) {
     await sleep(200);
     if (backgroundClasses) {
         for (let i = 0; i < squares.length; i++) {
-            squares[i].classList.remove("bg-secondary");
             squares[i].classList.add(backgroundClasses[i]);
+            squares[i].classList.remove("bg-secondary");
         }
         await sleep(200);
     }
@@ -38,8 +38,8 @@ async function updateColours(colours) {
         square.classList.add("border-invisible");
         square.classList.remove("border-secondary");
         if (!(square.innerHTML in keyboardUsed))
-            keyboardUsed[square.innerHTML] = colours[i]
-        else if (keyboardUsed[square.innerHTML] != green && ((keyboardUsed[square.innerHTML] == yellow && colours[i] == green) || keyboardUsed[square.innerHTML] == black))
+            keyboardUsed[square.innerHTML] = colours[i];
+        else if (colours[i] != black && keyboardUsed[square.innerHTML] != green && (colours[i] == green || keyboardUsed[square.innerHTML] == black))
             keyboardUsed[square.innerHTML] = colours[i];
         await flashBackground([square], [colours[i]]);
     }
