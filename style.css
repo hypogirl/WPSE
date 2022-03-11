@@ -1,13 +1,37 @@
+:root {
+    --green: #3a753f;
+    --yellow: #75653a;
+    --black: #343434;
+    --background: #181818;
+    --text: black;
+    --body: url(imgs/1.jpg);
+}
+
+.wrong {
+    background-color: var(--black);
+}
+
+.correct {
+    background-color: var(--green);
+}
+
+.wrongplace {
+    background-color: var(--yellow);
+}
+
 body {
-    background: #000000;
     background-position: left top;
     background-repeat: repeat;
-    background-image: url(imgs/2.jpg);
+    background-image: var(--body);
 }
 
 .bg-dark {
     --bs-bg-opacity: 1;
-    background-color: #181818!important;
+    background-color: var(--background)!important;
+}
+
+.text-light {
+    color: var(--text);
 }
 
 .navbar-brand {
@@ -102,18 +126,6 @@ body {
 
 .white-background {
     background-color: #ffffff32;
-}
-
-.wrong-theme2 {
-    background-color: #4a4a4a!important;
-}
-
-.correct-theme2 {
-    background-color: #43945d;
-}
-
-.wrongplace-theme2 {
-    background-color: #69308a;
 }
 
 .display-small {

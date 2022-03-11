@@ -22,16 +22,18 @@
     </nav>
     <div class="position-absolute top-50 start-50 translate-middle rounded p-4 bg-dark text-light shadow-lg display-none display-small" id="settings">
         <p class="h4 text-center pb-2 mb-1 border-bottom border-secondary">SETTINGS</p>
-        <p class="text-center mb-3">Choose a background</p>
-        <div class="row">
-            <div class="col-2"></div>
+        <p class="text-center mb-4">Choose a theme:</p>
+        <div class="row text-center pt-3">
+            <div class="col-3"></div>
             <div class="col opacity-0 backgroundImg">
-                <img src="imgs/1.jpg" class="figure-img img-fluid rounded">
+                <img src="imgs/1.jpg" class="figure-img img-fluid rounded" onclick="updateTheme(1)">
+                Dark Version
             </div>
             <div class="col opacity-0 backgroundImg">
-                <img src="imgs/2.jpg" class="figure-img img-fluid rounded">
+                <img src="imgs/2.jpg" class="figure-img img-fluid rounded" onclick="updateTheme(2)">
+                Light Version
             </div>
-            <div class="col-2"></div>
+            <div class="col-3"></div>
         </div>
         <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 mt-4 me-4" aria-label="Close" onclick="closeSettings()"></button>
     </div>
