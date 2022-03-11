@@ -7,6 +7,7 @@ var letters = 5;
 var guess = new String();
 var keyboard = new Object();
 var tries = 6;
+var endingStr = "Wiccle Phase Springs Eternal ";
 //var vars = await getCookieVars();
 //var tries = vars[0];
 //var stats = vars[1];

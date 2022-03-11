@@ -62,9 +62,9 @@ async function showErrorMessage(error) {
     error.classList.remove("opacity-1");
 }
 
-async function victory() {
+async function victory(guessSave) {
     victoryDiv = document.getElementById("victory");
-    victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guess.toLowerCase())
+    victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
     const buttons = document.getElementsByClassName("share");
 
     victoryDiv.classList.remove("display-none");
@@ -75,6 +75,21 @@ async function victory() {
     for (button of buttons) {
         button.classList.add("opacity-1");
         button.classList.remove("opacity-0");
+    }
+}
+
+function updateEndingStr(squares) {
+    const greenSquare = "🟩";
+    let yellowSquare;
+    if (theme == "1") yellowSquare = "🟨";
+    else yellowSquare = "🟪";
+    const blackSquare = "⬛";
+
+    endingStr += String(6 - tries) + "/6\n\n";
+    for (square of squares) {
+        if (square == green) endingStr += greenSquare;
+        else if (square == yellow) endingStr += yellowSquare;
+        else if (square == black) endingStr += blackSquare;
     }
 }
 
@@ -97,11 +112,13 @@ async function keyPressed(key) {
             await showErrorMessage(errorContent);
             return;
         }
-        squares = checkWord(guess, words[aIndex]);
-        updateColours(squares);
-        await sleep(3000);
-        if (!squares.includes(yellow) && !squares.includes(black)) victory();
+        const squares = checkWord(guess, words[aIndex]);
+        const guessSave = guess;
         guess = "";
+        updateColours(squares);
+        updateEndingStr(squares);
+        await sleep(3000);
+        if (!squares.includes(yellow) && !squares.includes(black)) victory(guessSave);
     }
 }
 

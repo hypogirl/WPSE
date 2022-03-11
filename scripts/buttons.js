@@ -45,3 +45,7 @@ async function closeVictory() {
     victoryDiv.classList.add("display-none");
     victoryDiv.classList.remove("display");
 }
+
+function copyEnding() {
+    navigator.clipboard.writeText(endingStr);
+}
