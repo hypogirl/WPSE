@@ -64,6 +64,7 @@ async function showErrorMessage(error) {
 
 async function victory() {
     victoryDiv = document.getElementById("victory");
+    victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guess.toLowerCase())
     const buttons = document.getElementsByClassName("share");
 
     victoryDiv.classList.remove("display-none");
@@ -97,10 +98,10 @@ async function keyPressed(key) {
             return;
         }
         squares = checkWord(guess, words[aIndex]);
-        guess = "";
         updateColours(squares);
-        await sleep(2500);
+        await sleep(3000);
         if (!squares.includes(yellow) && !squares.includes(black)) victory();
+        guess = "";
     }
 }
 
@@ -112,8 +113,8 @@ document.onkeydown = async () => {
 };
 
 async function uiKeyPressed() {
-    if (this.innerHTML == "Enter") await keyPressed(13);
-    else if (this.innerHTML == "⌫") await keyPressed(8);
+    if (this.id == "enter") await keyPressed(13);
+    else if (this.id == "backspace") await keyPressed(8);
     else await keyPressed(this.innerHTML.charCodeAt());
 }
 
