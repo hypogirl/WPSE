@@ -31,6 +31,27 @@ async function closeSettings() {
     settingsDiv.classList.remove("display");
 }
 
+async function openStats() {
+    closeWindows("stats");
+    updateStatsBars("stats-bar");
+    const statsDiv = document.getElementById("stats");
+    
+    statsDiv.classList.remove("display-none");
+    statsDiv.classList.add("display");
+    await sleep(1);
+    statsDiv.classList.remove("display-small-settings");
+    statsDiv.classList.add("display-big-settings");
+}
+
+async function closeStats() {
+    const statsDiv = document.getElementById("stats");
+    statsDiv.classList.add("display-small-settings");
+    statsDiv.classList.remove("display-big-settings");
+    await sleep(500);
+    statsDiv.classList.add("display-none");
+    statsDiv.classList.remove("display");
+}
+
 async function closeVictory() {
     const victoryDiv = document.getElementById("victory");
     const buttons = document.getElementsByClassName("share");

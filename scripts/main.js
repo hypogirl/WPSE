@@ -62,8 +62,8 @@ async function showErrorMessage(error) {
     error.classList.remove("opacity-1");
 }
 
-function updateStatsBars() {
-    const bars = document.getElementsByClassName("bar");
+function updateStatsBars(barClass) {
+    const bars = document.getElementsByClassName(barClass);
     const max = Math.max(...stats);
     for (let i = 0; i < 6; i++) {
         bars[i].style.width = (stats[i]/max)*100 + "%";
@@ -74,7 +74,7 @@ function updateStatsBars() {
 async function victory(guessSave) {
     closeWindows("victory");
     endingStr = endingStr.replace("%n",6-tries);
-    updateStatsBars();
+    updateStatsBars("victory-bar");
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
     const buttons = document.getElementsByClassName("share");
@@ -107,10 +107,6 @@ function updateEndingStr(squares) {
 
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
-    if (!tries && !blockGame) {
-        blockGame = true;
-        defeat();
-    }
     if (blockGame) return
     if (letters) {
         if (key == 13) {
@@ -139,12 +135,17 @@ async function keyPressed(key) {
             victory(guessSave);
             blockGame = true;
         }
+        if (!tries && !blockGame) {
+            blockGame = true;
+            openStats();
+        }
     }
 }
 
 function closeWindows(window = null) {
     if (window != "settings") closeSettings();
     if (window != "victory") closeVictory();
+    if (window != "stats") closeStats();
 }
 
 document.onkeydown = async () => {
