@@ -1,4 +1,5 @@
 async function openSettings() {
+    closeWindows("settings");
     const settingsDiv = document.getElementById("settings");
     const imgs = document.getElementsByClassName("backgroundImg");
 

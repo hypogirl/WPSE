@@ -72,6 +72,7 @@ function updateStatsBars() {
 }
 
 async function victory(guessSave) {
+    closeWindows("victory");
     endingStr = endingStr.replace("%n",6-tries);
     updateStatsBars();
     victoryDiv = document.getElementById("victory");
@@ -141,8 +142,9 @@ async function keyPressed(key) {
     }
 }
 
-function closeWindows() {
-    closeSettings(); closeVictory();
+function closeWindows(window = null) {
+    if (window != "settings") closeSettings();
+    if (window != "victory") closeVictory();
 }
 
 document.onkeydown = async () => {
