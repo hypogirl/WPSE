@@ -5,6 +5,7 @@
     --background: #181818;
     --text: black;
     --body: url(imgs/1.jpg);
+    --button: #212529;
 }
 
 .wrong {
@@ -26,12 +27,15 @@ body {
 }
 
 .bg-dark {
-    --bs-bg-opacity: 1;
     background-color: var(--background)!important;
 }
 
 .text-light {
     color: var(--text);
+}
+
+.btn-dark {
+    background-color: var(--button);
 }
 
 .navbar-brand {
@@ -115,7 +119,7 @@ body {
     transition: 0.2s;
 }
 
-.display-small, .display-big {
+.display-small-settings, .display-big-settings, .display-small-victory, .display-big-victory {
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
@@ -128,16 +132,28 @@ body {
     background-color: #ffffff32;
 }
 
-.display-small {
+.display-small-settings {
     opacity: 0;
-    width: 50%;
+    width: 100%;
+    height: 35%;
+}
+
+.display-small-victory {
+    opacity: 0;
+    width: 83%;
     height: 45%;
 }
 
-.display-big {
+.display-big-settings {
     opacity: 1;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 40%;
+}
+
+.display-big-victory {
+    opacity: 1;
+    width: 83%;
+    height: 53%;
 }
 
 .display-none {
@@ -150,4 +166,92 @@ body {
 
 .backgroundImg:hover {
     background-color: #ffffff3d;
+}
+
+@media (min-width: 575px) {
+    .display-big-settings {
+        width: 76%;
+        height: 41%;
+    }
+
+    .display-small-settings {
+        width: 75%;
+        height: 35%;
+    }
+    
+    .display-big-victory {
+        width: 80%;
+        height: 50%;
+    }
+
+    .display-small-victory {
+        width: 80%;
+        height: 45%;
+    }
+}
+
+@media (min-width: 830px) {
+    .display-big-settings {
+        width: 76%;
+        height: 47%;
+    }
+
+    .display-small-settings {
+        width: 75%;
+        height: 40%;
+    }
+    
+    .display-big-victory {
+        width: 55%;
+        height: 50%;
+    }
+
+    .display-small-victory {
+        width: 55%;
+        height: 45%;
+    }
+}
+
+@media (min-width: 975px) {
+    .display-big-settings {
+        width: 50%;
+        height: 40%;
+    }
+
+    .display-small-settings {
+        width: 50%;
+        height: 35%;
+    }
+
+    .display-big-victory {
+        width: 50%;
+        height: 50%;
+    }
+
+    .display-small-victory {
+        width: 50%;
+        height: 45%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .display-big-settings {
+        width: 50%;
+        height: 50%;
+    }
+
+    .display-small-settings {
+        width: 50%;
+        height: 45%;
+    }
+    
+    .display-big-victory {
+        width: 50%;
+        height: 50%;
+    }
+
+    .display-small-victory {
+        width: 50%;
+        height: 45%;
+    }
 }

@@ -33,6 +33,7 @@ function updateTheme(theme) {
         root.style.setProperty('--background', '#181818');
         root.style.setProperty('--text', 'black');
         root.style.setProperty('--body', 'url(imgs/1.jpg)');
+        root.style.setProperty('--button', '#212529');
     }
     else {
         root.style.setProperty('--green', '#43945d');
@@ -41,5 +42,6 @@ function updateTheme(theme) {
         root.style.setProperty('--background', '#003859');
         root.style.setProperty('--text', 'white');
         root.style.setProperty('--body', 'url(imgs/2.jpg)');
+        root.style.setProperty('--button', '#21252900');
     }
 }

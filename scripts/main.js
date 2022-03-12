@@ -81,8 +81,8 @@ async function victory(guessSave) {
 
     victoryDiv.classList.remove("display-none");
     await sleep(1)
-    victoryDiv.classList.remove("display-small");
-    victoryDiv.classList.add("display-big");
+    victoryDiv.classList.remove("display-small-victory");
+    victoryDiv.classList.add("display-big-victory");
     await sleep(250);
     for (button of buttons) {
         button.classList.add("opacity-1");
@@ -93,7 +93,7 @@ async function victory(guessSave) {
 function updateEndingStr(squares) {
     const greenSquare = "🟩";
     let yellowSquare;
-    if (theme == "1") yellowSquare = "🟨";
+    if (theme == 1) yellowSquare = "🟨";
     else yellowSquare = "🟪";
     const blackSquare = "⬛";
 

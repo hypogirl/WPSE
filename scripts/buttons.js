@@ -6,8 +6,8 @@ async function openSettings() {
     settingsDiv.classList.remove("display-none");
     settingsDiv.classList.add("display");
     await sleep(1);
-    settingsDiv.classList.remove("display-small");
-    settingsDiv.classList.add("display-big");
+    settingsDiv.classList.remove("display-small-settings");
+    settingsDiv.classList.add("display-big-settings");
     await sleep(250);
     for (img of imgs) {
         img.classList.add("opacity-1");
@@ -24,8 +24,8 @@ async function closeSettings() {
         img.classList.add("opacity-0");
     }
     await sleep(100);
-    settingsDiv.classList.add("display-small");
-    settingsDiv.classList.remove("display-big");
+    settingsDiv.classList.add("display-small-settings");
+    settingsDiv.classList.remove("display-big-settings");
     await sleep(500);
     settingsDiv.classList.add("display-none");
     settingsDiv.classList.remove("display");
@@ -40,8 +40,8 @@ async function closeVictory() {
         button.classList.add("opacity-0");
     }
     await sleep(100);
-    victoryDiv.classList.add("display-small");
-    victoryDiv.classList.remove("display-big");
+    victoryDiv.classList.add("display-small-victory");
+    victoryDiv.classList.remove("display-big-victory");
     await sleep(500);
     victoryDiv.classList.add("display-none");
     victoryDiv.classList.remove("display");
