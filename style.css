@@ -11,12 +11,12 @@
     background-color: var(--black);
 }
 
-.correct {
-    background-color: var(--green);
-}
-
 .wrongplace {
     background-color: var(--yellow);
+}
+
+.correct {
+    background-color: var(--green);
 }
 
 body {

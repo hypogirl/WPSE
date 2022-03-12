@@ -39,7 +39,7 @@ async function updateColours(colours) {
         square.classList.remove("border-secondary");
         if (!(square.innerHTML in keyboardUsed))
             keyboardUsed[square.innerHTML] = colours[i];
-        else if (colours[i] != black && keyboardUsed[square.innerHTML] != green && (colours[i] == green || keyboardUsed[square.innerHTML] == black))
+        else if (priority[colours[i]] > priority[keyboardUsed[square.innerHTML]])
             keyboardUsed[square.innerHTML] = colours[i];
         await flashBackground([square], [colours[i]]);
     }
