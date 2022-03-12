@@ -63,6 +63,7 @@ async function showErrorMessage(error) {
 }
 
 async function victory(guessSave) {
+    endingStr = endingStr.replace("%n",6-tries);
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
     const buttons = document.getElementsByClassName("share");
@@ -85,7 +86,7 @@ function updateEndingStr(squares) {
     else yellowSquare = "🟪";
     const blackSquare = "⬛";
 
-    endingStr += String(6 - tries) + "/6\n\n";
+    endingStr += "\n"
     for (square of squares) {
         if (square == green) endingStr += greenSquare;
         else if (square == yellow) endingStr += yellowSquare;
