@@ -46,6 +46,15 @@ async function closeVictory() {
     victoryDiv.classList.remove("display");
 }
 
-function copyEnding() {
+async function copyEnding() {
+    const clipboard = document.getElementById("clipboard");
     navigator.clipboard.writeText(endingStr);
+    clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>"
+    await sleep(3000);
+    clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
+}
+
+function openTwitter() {
+    const url = "https://twitter.com/intent/tweet?text=" + endingStr.replaceAll("\n","%0D%0A");
+    window.open(url)
 }

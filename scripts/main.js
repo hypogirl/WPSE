@@ -62,8 +62,18 @@ async function showErrorMessage(error) {
     error.classList.remove("opacity-1");
 }
 
+function updateStatsBars() {
+    const bars = document.getElementsByClassName("bar");
+    const max = Math.max(...stats);
+    for (let i = 0; i < 6; i++) {
+        bars[i].style.width = (stats[i]/max)*100 + "%";
+        bars[i].innerHTML = stats[i];
+    }
+}
+
 async function victory(guessSave) {
     endingStr = endingStr.replace("%n",6-tries);
+    updateStatsBars();
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
     const buttons = document.getElementsByClassName("share");

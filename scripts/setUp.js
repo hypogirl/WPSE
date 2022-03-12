@@ -17,7 +17,7 @@ priority[yellow] = 1;
 priority[black] = 0;
 //var vars = await getCookieVars();
 //var tries = vars[0];
-//var stats = vars[1];
+var stats = ["1","3","15","22","10","4"];
 //var theme = vars[2];
 var theme = 1;
 updateTheme(theme);
