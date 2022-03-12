@@ -106,6 +106,11 @@ function updateEndingStr(squares) {
 
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
+    if (!tries && !blockGame) {
+        blockGame = true;
+        defeat();
+    }
+    if (blockGame) return
     if (letters) {
         if (key == 13) {
             await showErrorMessage(errorLength);
@@ -129,14 +134,21 @@ async function keyPressed(key) {
         updateColours(squares);
         updateEndingStr(squares);
         await sleep(3000);
-        if (!squares.includes(yellow) && !squares.includes(black)) victory(guessSave);
+        if (!squares.includes(yellow) && !squares.includes(black)) {
+            victory(guessSave);
+            blockGame = true;
+        }
     }
+}
+
+function closeWindows() {
+    closeSettings(); closeVictory();
 }
 
 document.onkeydown = async () => {
     var key = event.keyCode || event.charCode;
-    if (key != 8 && key != 13 && (key < 65 || key > 90))
-        return;
+    if (key == 27) closeWindows();
+    if (key != 8 && key != 13 && (key < 65 || key > 90)) return;
     await keyPressed(key);
 };
 

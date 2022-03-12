@@ -15,6 +15,7 @@ var priority = new Object();
 priority[green] = 2;
 priority[yellow] = 1;
 priority[black] = 0;
+var blockGame = false;
 //var vars = await getCookieVars();
 //var tries = vars[0];
 var stats = ["1","3","15","22","10","4"];
