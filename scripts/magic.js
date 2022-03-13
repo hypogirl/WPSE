@@ -62,7 +62,6 @@ async function getCookies() {
         const [tempKey, tempValue] = [matches[1], matches[2]];
         cookies[tempKey] = new Object();
         cookies[tempKey].encrypted = tempValue;
-        cookies[tempKey].decrypted = new String();
     }
 
     for (let [key, value] of Object.entries(cookies)) {
