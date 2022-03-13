@@ -33,18 +33,26 @@ if (cookies.STATE) {
     if (state[1]) stats = [state[1],state[2],state[3],state[4],state[5],state[6]];
     
 }
-if (cookies.SECONDARY) {
+if (cookies.SECONDARY && cookies.SECONDARY.DATE == getFinalDate()) {
     cookies.SECONDARY.name = "SECONDARY=";
     const secondary = cookies.SECONDARY;
+    if (secondary.DATE) cookieDate = secondary.DATE;
     if (secondary.TRIES) tries = secondary.TRIES;
     if (secondary.LETTERS) cookieLetters = secondary.LETTERS.split('');
     if (secondary.COLOURS) cookieColours = secondary.COLOURS.split('');
     if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
-    if (secondary.DATE) cookieDate = secondary.DATE;
+}
+
+if (lostGame) {
+    openStats();
+    blockGame = true;
+}
+else if (!tries) {
+    victory(words[getAnswerIndex()]);
+    blockGame = true;
 }
 
 updateTheme(theme);
-
 
 function updateTheme(theme) {
     const root = document.querySelector(':root');

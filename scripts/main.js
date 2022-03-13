@@ -74,9 +74,7 @@ function updateStatsBars(barClass) {
 async function victory(guessSave) {
     closeWindows("victory");
     endingStr = endingStr.replace("%n",6-tries);
-    stats[6-tries-1] += 1;
-    cookies["STATE"]["STATS"][6-tries-1] += 1;
-    
+
     updateStatsBars("victory-bar");
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
@@ -135,6 +133,8 @@ async function keyPressed(key) {
         updateEndingStr(squares);
         await sleep(3000);
         if (!squares.includes(yellow) && !squares.includes(black)) {
+            stats[6-tries-1] += 1;
+            cookies["STATE"]["STATS"][6-tries-1] += 1;
             victory(guessSave);
             blockGame = true;
         }
