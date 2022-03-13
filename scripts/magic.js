@@ -30,7 +30,7 @@ async function encryptCookie(value) {
     for (char of value) charCodeCookie += char.charCodeAt();
 
     const encrypted = await aesGcmEncrypt(charCodeCookie,finalDate);
-    return encrypted;
+    return encrypted.replaceAll("=","_");;
 }
 
 async function decryptCookie(encrypted) {
@@ -42,27 +42,34 @@ async function decryptCookie(encrypted) {
     return cookieText;
 }
 
-async function getCookieVars() {
-    cookies = document.cookie;
-    let cookies = [new Object(), new Object()];
-    cookies[0].name = "tries";
-    cookies[1].name = "stats";
+function getCookieVars(value) {
+    const varsInit = value.match(/\w+\.\w+/g);
+    let vars = new Object();
+    for (keyVal of varsInit) {
+        const matches = keyVal.match(/(\w+)\.(\w+)/);
+        const [tempKey, tempValue] = [matches[1], matches[2]];
+        vars[tempKey] = tempValue;
+    }
+    return vars;
+}
 
-    for (cookie of encryptedCookies) {
-        cookie.value = cookie.encrypted = null;
-        cookie.index = [-1,-1];
-        
-        if ((cookie.index[0] = cookies.indexOf(cookie.name)) != -1) {
-            
-            cookie.index[1] = cookies.substring(cookie.index[0]).indexOf(";");
-            if (cookie.index[1] != 1) cookie.encrypted = cookies.substring(cookie.index[0],cookie.index[1]);
-            else cookie.encrypted = cookies.substring(cookie.index[0]);
-            
-            cookie.value = await decryptCookie(cookie.encrypted);
-        }
+async function getCookies() {
+    const originalCookies = a.match(/\w+=.+;/);
+    if (!originalCookies) return null;
+    let cookies = new Object();
+    for (originalCookie of originalCookies) {
+        const matches = originalCookie.slice(0,originalCookie.length-1).match(/(\w+)=(.+)/);
+        const [tempKey, tempValue] = [matches[1], matches[2]];
+        cookies[tempKey] = new Object();
+        cookies[tempKey].encrypted = tempValue;
+        cookies[tempKey].decrypted = new String();
     }
 
-    return [cookies[0].value, cookies[1].value];
+    for (let [key, value] of Object.entries(cookies)) {
+        cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
+        cookies[key].vars = getCookieVars(cookies[key].decrypted);
+    }
+    return cookies;
 }
 
 function setTriesCookie(tries) {
