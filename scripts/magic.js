@@ -45,6 +45,7 @@ async function decryptCookie(encrypted) {
 function getCookieVars(value) {
     const varsInit = value.match(/\w+\.\w+/g);
     let vars = new Object();
+    
     for (keyVal of varsInit) {
         const matches = keyVal.match(/(\w+)\.(\w+)/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
@@ -54,11 +55,12 @@ function getCookieVars(value) {
 }
 
 async function getCookies() {
-    const originalCookies = a.match(/\w+=.+;/);
+    const originalCookies = document.cookies.split(";");
     if (!originalCookies) return null;
     let cookies = new Object();
+
     for (originalCookie of originalCookies) {
-        const matches = originalCookie.slice(0,originalCookie.length-1).match(/(\w+)=(.+)/);
+        const matches = originalCookie.match(/(\w+)=(.+)/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
         cookies[tempKey] = new Object();
         cookies[tempKey].encrypted = tempValue;
