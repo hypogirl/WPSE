@@ -21,7 +21,7 @@ priority[yellow] = 1;
 priority[black] = 0;
 
 var blockGame = false;
-var stats = [], lostGame = false, cookieDate;
+var stats = [0,0,0,0,0,0], lostGame = false, cookieDate;
 var cookieLetters, cookieColours;
 var theme = 1;
 var cookies = new Object();
