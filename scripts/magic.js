@@ -56,7 +56,7 @@ function getCookieVars(value) {
 
 async function getCookies() {
     const originalCookies = document.cookie.split(";");
-    if (!originalCookies) return null;
+    if (originalCookies == '') return null;
     let cookies = new Object();
 
     for (originalCookie of originalCookies) {

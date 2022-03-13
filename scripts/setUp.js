@@ -2,25 +2,44 @@ const errorLength = document.getElementById("error-length");
 const errorContent = document.getElementById("error-content");
 const uiKeys = document.getElementsByClassName("key");
 const aIndex = getAnswerIndex();
-var keyboardUsed = new Object();
+
 var letters = 5;
+var tries = 6;
+
+var keyboardUsed = new Object();
 var guess = new String();
 var keyboard = new Object();
-var tries = 6;
+
 var endingStr = "Wiccle Phase Springs Eternal %n/6\n";
 var green = "correct";
 var yellow = "wrongplace";
 var black = "wrong";
+
 var priority = new Object();
 priority[green] = 2;
 priority[yellow] = 1;
 priority[black] = 0;
+
 var blockGame = false;
-//var vars = await getCookies();
-//var tries = vars[0];
-var stats = ["1","3","15","22","10","4"];
-//var theme = vars[2];
+var stats = [], lostGame = false, cookieDate;
+var cookieLetters, cookieColours;
 var theme = 1;
+var cookies = new Object();
+// date, tries, stats, colours and letters
+if (cookies["STATE"]) {
+    const state = cookies["STATE"]
+    if (state["TRIES"]) tries = state["TRIES"];
+    if (state["1"]) stats = [state["1"],state["2"],state["3"],state["4"],state["5"],state["6"]];
+    if (state["LOST"]) lostGame = Boolean(Number(state["LOST"]))
+    if (state["DATE"]) cookieDate = Number(state["DATE"])
+}
+if (cookies["SECONDARY"]) {
+    const secondary = cookies["SECONDARY"];
+    if (secondary["LETTERS"]) cookieLetters = secondary["letters"].split('');
+    if (secondary["COLOURS"]) cookieColours = secondary["letters"].split('');
+}
+if (cookies["THEME"]) theme = cookies["THEME"];
+
 updateTheme(theme);
 
 
