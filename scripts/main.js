@@ -135,6 +135,7 @@ async function keyPressed(key) {
         if (!squares.includes(yellow) && !squares.includes(black)) {
             stats[6-tries-1] += 1;
             cookies["STATE"]["STATS"][6-tries-1] += 1;
+            setCookies(cookies.STATE);
             victory(guessSave);
             blockGame = true;
         }

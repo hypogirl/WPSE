@@ -54,9 +54,12 @@ else if (!tries) {
 
 updateTheme(theme);
 
-function updateTheme(theme) {
+function updateTheme(newTheme) {
+    theme = newTheme;
+    setCookies(cookies.STATE);
+
     const root = document.querySelector(':root');
-    if (theme == 1) {
+    if (newTheme == 1) {
         root.style.setProperty('--green', '#3a753f');
         root.style.setProperty('--yellow', '#75653a');
         root.style.setProperty('--black', '#343434');
