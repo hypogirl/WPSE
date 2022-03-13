@@ -54,12 +54,12 @@ async function updateColours(colours) {
     letters = 5;
 }
 
-async function showErrorMessage(error) {
-    error.classList.remove("opacity-0");
-    error.classList.add("opacity-1");
+async function showAlert(alert) {
+    alert.classList.remove("opacity-0");
+    alert.classList.add("opacity-1");
     await sleep(1500);
-    error.classList.add("opacity-0");
-    error.classList.remove("opacity-1");
+    alert.classList.add("opacity-0");
+    alert.classList.remove("opacity-1");
 }
 
 function updateStatsBars(barClass) {
@@ -74,6 +74,7 @@ function updateStatsBars(barClass) {
 async function victory(guessSave) {
     closeWindows("victory");
     endingStr = endingStr.replace("%n",6-tries);
+    stats[6-tries-1] += 1;
     updateStatsBars("victory-bar");
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
@@ -110,7 +111,7 @@ async function keyPressed(key) {
     if (blockGame) return
     if (letters) {
         if (key == 13) {
-            await showErrorMessage(errorLength);
+            await showAlert(errorLength);
             return;
         };
         if (key == 8)
@@ -122,7 +123,7 @@ async function keyPressed(key) {
     }
     else if (key == 13 && tries) {
         if (!words.includes(guess) && !english_words.includes(guess)) {
-            await showErrorMessage(errorContent);
+            await showAlert(errorContent);
             return;
         }
         const squares = checkWord(guess, words[aIndex]);
