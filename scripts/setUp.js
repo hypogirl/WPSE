@@ -21,24 +21,27 @@ priority[yellow] = 1;
 priority[black] = 0;
 
 var blockGame = false;
-var stats = [0,0,0,0,0,0], lostGame = false, cookieDate;
+var stats = [0,0,0,0,0,0], lostGame = false, cookieDate = getFinalDate();
 var cookieLetters, cookieColours;
 var theme = 1;
 var cookies = new Object();
-// date, tries, stats, colours and letters
-if (cookies["STATE"]) {
-    const state = cookies["STATE"]
-    if (state["TRIES"]) tries = state["TRIES"];
-    if (state["1"]) stats = [state["1"],state["2"],state["3"],state["4"],state["5"],state["6"]];
-    if (state["LOST"]) lostGame = Boolean(Number(state["LOST"]))
-    if (state["DATE"]) cookieDate = Number(state["DATE"])
+
+if (cookies.STATE) {
+    cookies.STATE.name = "STATE=";
+    const state = cookies.STATE;
+    if (state.THEME) theme = state.THEME;
+    if (state[1]) stats = [state[1],state[2],state[3],state[4],state[5],state[6]];
+    
 }
-if (cookies["SECONDARY"]) {
-    const secondary = cookies["SECONDARY"];
-    if (secondary["LETTERS"]) cookieLetters = secondary["letters"].split('');
-    if (secondary["COLOURS"]) cookieColours = secondary["letters"].split('');
+if (cookies.SECONDARY) {
+    cookies.SECONDARY.name = "SECONDARY=";
+    const secondary = cookies.SECONDARY;
+    if (secondary.TRIES) tries = secondary.TRIES;
+    if (secondary.LETTERS) cookieLetters = secondary.LETTERS.split('');
+    if (secondary.COLOURS) cookieColours = secondary.COLOURS.split('');
+    if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
+    if (secondary.DATE) cookieDate = secondary.DATE;
 }
-if (cookies["THEME"]) theme = cookies["THEME"];
 
 updateTheme(theme);
 

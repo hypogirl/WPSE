@@ -43,11 +43,11 @@ async function decryptCookie(encrypted) {
 }
 
 function getCookieVars(value) {
-    const varsInit = value.match(/\w+\.\w+/g);
+    const varsInit = value.match(/\w+\.\w+:/g);
     let vars = new Object();
 
     for (keyVal of varsInit) {
-        const matches = keyVal.match(/(\w+)\.(\w+)/);
+        const matches = keyVal.match(/(\w+)\.(\w+):/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
         vars[tempKey] = tempValue;
     }
@@ -73,8 +73,20 @@ async function getCookies() {
     return cookies;
 }
 
-function setTriesCookie(tries) {
-
+async function setCookies(cookie) {
+    let toEncrypt, date;
+    if (cookie.name == "STATE=") {
+        toEncrypt = "THEME." + theme + ":1." + cookie[1] + ":2." + cookie[2] + ":3." + cookie[3] + ":4." + cookie[4] + ":5." + cookie[5] + ":6." + cookie[6] + ":";
+        date = (new Date()).setTime((new Date()).getTime() + (365 * 24 * 60 * 60 * 1000));
+        date = date.toUTCString();
+    }
+    else if (cookie.name = "SECONDARY=") {
+        toEncrypt = "TRIES." + tries + ":LETTERS." + guessesStr + ":COLOURS." + prioritiesStr + ":LOST." + Number(lostGame) + ":DATE." + getFinalDate() + ":";
+        date = (new Date()).setTime((new Date()).getTime() + (24 * 60 * 60 * 1000));
+        date = date.toUTCString();
+    }
+    const cookieStr = await encryptCookie(toEncrypt);
+    document.cookie = cookie.name + cookieStr + ";expires=" + date
 }
 
 

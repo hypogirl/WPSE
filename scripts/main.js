@@ -75,6 +75,8 @@ async function victory(guessSave) {
     closeWindows("victory");
     endingStr = endingStr.replace("%n",6-tries);
     stats[6-tries-1] += 1;
+    cookies["STATE"]["STATS"][6-tries-1] += 1;
+    
     updateStatsBars("victory-bar");
     victoryDiv = document.getElementById("victory");
     victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
