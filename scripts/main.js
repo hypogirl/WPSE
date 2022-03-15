@@ -119,6 +119,11 @@ function secondaryCookieUpdate(squares, guessSave) {
         cookies.SECONDARY = secondary;
         setCookies(cookies.SECONDARY);
     }
+    else {
+        cookies.SECONDARY.LETTERS = guessesStr;
+        cookies.SECONDARY.COLOURS = prioritiesStr;
+        setCookies(cookies.SECONDARY);
+    }
 }
 
 async function keyPressed(key) {
