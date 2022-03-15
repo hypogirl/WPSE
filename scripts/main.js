@@ -133,8 +133,8 @@ async function keyPressed(key) {
         updateEndingStr(squares);
         await sleep(3000);
         if (!squares.includes(yellow) && !squares.includes(black)) {
-            stats[6-tries-1] += 1;
-            cookies["STATE"][6-tries] += 1;
+            stats[6-tries-1] = Number(stats[6-tries-1]) + 1;
+            cookies["STATE"][6-tries] = stats[6-tries-1];
             setCookies(cookies.STATE);
             victory(guessSave);
             blockGame = true;
