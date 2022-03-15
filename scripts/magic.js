@@ -90,6 +90,7 @@ async function getCookies() {
         cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
         cookies[key].vars = getCookieVars(cookies[key].decrypted);
     }
+    console.log(cookies)
     if (String(cookies) == String({})) {
         cookies = {
             STATE: {
