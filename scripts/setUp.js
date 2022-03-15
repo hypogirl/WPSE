@@ -56,29 +56,29 @@ window.onload = async () => {
     }
     
     updateTheme(theme);
-    
-    function updateTheme(newTheme) {
-        theme = newTheme;
-        setCookies(cookies.STATE);
-    
-        const root = document.querySelector(':root');
-        if (newTheme == 1) {
-            root.style.setProperty('--green', '#3a753f');
-            root.style.setProperty('--yellow', '#75653a');
-            root.style.setProperty('--black', '#343434');
-            root.style.setProperty('--background', '#181818');
-            root.style.setProperty('--text', 'black');
-            root.style.setProperty('--body', 'url(imgs/1.jpg)');
-            root.style.setProperty('--button', '#212529');
-        }
-        else {
-            root.style.setProperty('--green', '#43945d');
-            root.style.setProperty('--yellow', '#69308a');
-            root.style.setProperty('--black', '#4a4a4a');
-            root.style.setProperty('--background', '#003859');
-            root.style.setProperty('--text', 'white');
-            root.style.setProperty('--body', 'url(imgs/2.jpg)');
-            root.style.setProperty('--button', '#21252900');
-        }
+}
+
+function updateTheme(newTheme) {
+    theme = newTheme;
+    setCookies(cookies.STATE);
+
+    const root = document.querySelector(':root');
+    if (newTheme == 1) {
+        root.style.setProperty('--green', '#3a753f');
+        root.style.setProperty('--yellow', '#75653a');
+        root.style.setProperty('--black', '#343434');
+        root.style.setProperty('--background', '#181818');
+        root.style.setProperty('--text', 'black');
+        root.style.setProperty('--body', 'url(imgs/1.jpg)');
+        root.style.setProperty('--button', '#212529');
+    }
+    else {
+        root.style.setProperty('--green', '#43945d');
+        root.style.setProperty('--yellow', '#69308a');
+        root.style.setProperty('--black', '#4a4a4a');
+        root.style.setProperty('--background', '#003859');
+        root.style.setProperty('--text', 'white');
+        root.style.setProperty('--body', 'url(imgs/2.jpg)');
+        root.style.setProperty('--button', '#21252900');
     }
 }
