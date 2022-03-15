@@ -56,6 +56,7 @@ function getCookieVars(value) {
 
 async function getCookies() {
     const originalCookies = document.cookie.split(";");
+    console.log(1)
     if (originalCookies == '') {
         cookies = {
             STATE: {
@@ -79,6 +80,7 @@ async function getCookies() {
         }
         return cookies;
     }
+    console.log(2)
     for (originalCookie of originalCookies) {
         const matches = originalCookie.match(/(\w+)=(.+)/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
@@ -90,7 +92,7 @@ async function getCookies() {
         cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
         cookies[key].vars = getCookieVars(cookies[key].decrypted);
     }
-    console.log(cookies)
+    console.log(3)
     if (String(cookies) == String({})) {
         cookies = {
             STATE: {
@@ -113,22 +115,22 @@ async function getCookies() {
             }
         }
     }
+    console.log(4)
     return cookies;
 }
 
 async function setCookies(cookie) {
     let toEncrypt, date;
     if (cookie.name == "STATE=") {
-        console.log(theme)
-        toEncrypt = "THEME." + theme + ":1." + cookie[1] + ":2." + cookie[2] + ":3." + cookie[3] + ":4." + cookie[4] + ":5." + cookie[5] + ":6." + cookie[6] + ":";
+        toEncrypt = "THEME." + cookie.THEME + ":1." + cookie[1] + ":2." + cookie[2] + ":3." + cookie[3] + ":4." + cookie[4] + ":5." + cookie[5] + ":6." + cookie[6] + ":";
         date = (new Date())
         date.setTime((new Date()).getTime() + (365 * 24 * 60 * 60 * 1000));
         date = date.toUTCString();
     }
-    else if (cookie.name = "SECONDARY=") {
+    else if (cookie.name == "SECONDARY=") {
         toEncrypt = "TRIES." + tries + ":LETTERS." + guessesStr + ":COLOURS." + prioritiesStr + ":LOST." + Number(lostGame) + ":DATE." + getFinalDate() + ":";
         date = (new Date())
-        date.setTime((new Date()).getTime() + (24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
         date = date.toUTCString();
     }
     const cookieStr = await encryptCookie(toEncrypt);

@@ -55,13 +55,14 @@ window.onload = async () => {
         blockGame = true;
     }
     
-    updateTheme(theme);
+    updateTheme(theme,true);
 }
 
-function updateTheme(newTheme) {
-    theme = newTheme;
-    console.log(theme)
-    setCookies(cookies.STATE);
+function updateTheme(newTheme, init=null) {
+    if (!init) {
+        theme = cookies.STATE.THEME = newTheme;
+        setCookies(cookies.STATE);
+    }
 
     const root = document.querySelector(':root');
     if (newTheme == 1) {
