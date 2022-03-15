@@ -116,6 +116,7 @@ function secondaryCookieUpdate(squares, guessSave) {
         secondary.name = "SECONDARY=";
         secondary.LETTERS = guessesStr;
         secondary.COLOURS = prioritiesStr;
+        cookies.SECONDARY = secondary;
         setCookies(cookies.SECONDARY);
     }
 }
