@@ -45,6 +45,7 @@ window.onload = async () => {
         if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
         for (i=0;i < cookieLetters.length; i+=5) {
             await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.substring(i,i+5));
+        }
     }
 
     if (lostGame) {
