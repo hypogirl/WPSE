@@ -38,6 +38,7 @@ window.onload = async () => {
     }
     else {
         let state = new Object();
+        state.name = "STATE=";
         state.THEME = theme;
         state[1] = 0;
         state[2] = 0;
@@ -45,6 +46,7 @@ window.onload = async () => {
         state[4] = 0;
         state[5] = 0;
         state[6] = 0;
+        cookies.STATE = state;
     }
     if (cookies.SECONDARY && cookies.SECONDARY.DATE == getFinalDate()) {
         cookies.SECONDARY.name = "SECONDARY=";
