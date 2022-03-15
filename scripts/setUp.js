@@ -36,6 +36,16 @@ window.onload = async () => {
         if (state.THEME) {theme = state.THEME; updateTheme(theme,true);}
         if (state[1]) stats = [state[1],state[2],state[3],state[4],state[5],state[6]];
     }
+    else {
+        let state = new Object();
+        state.THEME = theme;
+        state[1] = 0;
+        state[2] = 0;
+        state[3] = 0;
+        state[4] = 0;
+        state[5] = 0;
+        state[6] = 0;
+    }
     if (cookies.SECONDARY && cookies.SECONDARY.DATE == getFinalDate()) {
         cookies.SECONDARY.name = "SECONDARY=";
         const secondary = cookies.SECONDARY;
