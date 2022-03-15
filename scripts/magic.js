@@ -72,7 +72,6 @@ async function getCookies() {
             SECONDARY: {
                 name: "SECONDARY=",
                 DATE: null,
-                TRIES: tries,
                 LETTERS: null,
                 COLOURS: null,
                 LOST: null,
@@ -105,7 +104,7 @@ async function setCookies(cookie) {
         date = date.toUTCString();
     }
     else if (cookie.name == "SECONDARY=") {
-        toEncrypt = "TRIES." + tries + ":LETTERS." + guessesStr + ":COLOURS." + prioritiesStr + ":LOST." + Number(lostGame) + ":DATE." + getFinalDate() + ":";
+        toEncrypt = "LETTERS." + guessesStr + ":COLOURS." + prioritiesStr + ":LOST." + Number(lostGame) + ":DATE." + getFinalDate() + ":";
         date = (new Date())
         date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
         date = date.toUTCString();

@@ -40,7 +40,6 @@ window.onload = async () => {
         cookies.SECONDARY.name = "SECONDARY=";
         const secondary = cookies.SECONDARY;
         if (secondary.DATE) cookieDate = secondary.DATE;
-        if (secondary.TRIES) tries = secondary.TRIES;
         if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
         if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
             cookieColours[i] = getKey(priority,secondary.COLOURS);
