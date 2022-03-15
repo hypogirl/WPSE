@@ -60,6 +60,7 @@ window.onload = async () => {
 
 function updateTheme(newTheme) {
     theme = newTheme;
+    console.log(theme)
     setCookies(cookies.STATE);
 
     const root = document.querySelector(':root');

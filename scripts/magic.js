@@ -118,6 +118,7 @@ async function getCookies() {
 async function setCookies(cookie) {
     let toEncrypt, date;
     if (cookie.name == "STATE=") {
+        console.log(theme)
         toEncrypt = "THEME." + theme + ":1." + cookie[1] + ":2." + cookie[2] + ":3." + cookie[3] + ":4." + cookie[4] + ":5." + cookie[5] + ":6." + cookie[6] + ":";
         date = (new Date())
         date.setTime((new Date()).getTime() + (365 * 24 * 60 * 60 * 1000));
