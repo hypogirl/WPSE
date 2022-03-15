@@ -56,8 +56,31 @@ function getCookieVars(value) {
 
 async function getCookies() {
     const originalCookies = document.cookie.split(";");
-    if (originalCookies == '') return null;
-    let cookies = new Object();
+    if (originalCookies == '') {
+        if (String(cookies) == String({})) {
+            cookies = {
+                STATE: {
+                    name: "STATE=",
+                    THEME: theme,
+                    1: 0,
+                    2: 0,
+                    3: 0,
+                    4: 0,
+                    5: 0,
+                    6: 0
+                },
+                SECONDARY: {
+                    name: "SECONDARY=",
+                    DATE: null,
+                    TRIES: tries,
+                    LETTERS: null,
+                    COLOURS: null,
+                    LOST: null,
+                }
+            }
+        }
+        return;
+    };
 
     for (originalCookie of originalCookies) {
         const matches = originalCookie.match(/(\w+)=(.+)/);
@@ -69,6 +92,28 @@ async function getCookies() {
     for (let [key, value] of Object.entries(cookies)) {
         cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
         cookies[key].vars = getCookieVars(cookies[key].decrypted);
+    }
+    if (String(cookies) == String({})) {
+        cookies = {
+            STATE: {
+                name: "STATE=",
+                THEME: theme,
+                1: 0,
+                2: 0,
+                3: 0,
+                4: 0,
+                5: 0,
+                6: 0
+            },
+            SECONDARY: {
+                name: "SECONDARY=",
+                DATE: null,
+                TRIES: tries,
+                LETTERS: null,
+                COLOURS: null,
+                LOST: null,
+            }
+        }
     }
     return cookies;
 }
