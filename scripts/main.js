@@ -106,6 +106,20 @@ function updateEndingStr(squares) {
     }
 }
 
+function secondaryCookieUpdate(squares, guessSave) {
+    guessesStr += guessSave;
+        for (square in squares) {
+            prioritiesStr += priority[square];
+        }
+    if (!cookies.SECONDARY) {
+        let secondary = new Object();
+        secondary.name = "SECONDARY=";
+        secondary.LETTERS = guessesStr;
+        secondary.COLOURS = prioritiesStr;
+        setCookies(cookies.SECONDARY);
+    }
+}
+
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
     if (blockGame) return
@@ -126,19 +140,24 @@ async function keyPressed(key) {
             await showAlert(errorContent);
             return;
         }
+
         const squares = checkWord(guess, words[aIndex]);
         const guessSave = guess;
         guess = "";
+
         updateColours(squares);
         updateEndingStr(squares);
+        secondaryCookieUpdate(squares, guessSave);
         await sleep(3000);
+
         if (!squares.includes(yellow) && !squares.includes(black)) {
-            stats[6-tries-1] = Number(stats[6-tries-1]) + 1;
-            cookies["STATE"][6-tries] = stats[6-tries-1];
+            stats[6-tries] = Number(stats[6-tries]) + 1;
+            cookies["STATE"][6-tries] = stats[6-tries];
             setCookies(cookies.STATE);
             victory(guessSave);
             blockGame = true;
         }
+
         if (!tries && !blockGame) {
             blockGame = true;
             openStats();

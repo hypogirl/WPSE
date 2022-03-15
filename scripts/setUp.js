@@ -23,6 +23,7 @@ priority[black] = 0;
 var blockGame = false;
 var stats = [0,0,0,0,0,0], lostGame = false, cookieDate = getFinalDate();
 var cookieLetters, cookieColours;
+var guessesStr, prioritiesStr;
 var theme = 1;
 
 var cookies = new Object();
@@ -41,12 +42,17 @@ window.onload = async () => {
         if (secondary.DATE) cookieDate = secondary.DATE;
         if (secondary.TRIES) tries = secondary.TRIES;
         if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
-        if (secondary.COLOURS) cookieColours = secondary.COLOURS;
+        if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++) cookieColours[i] = getKey(priority,secondary.COLOURS);
         if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
         for (i=0;i < cookieLetters.length; i+=5) {
             await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.substring(i,i+5));
         }
     }
+
+    function getKey(object, value) {
+        return Object.keys(object).find(key => object[key] === value);
+    }
+      
 
     if (lostGame) {
         openStats();
