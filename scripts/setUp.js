@@ -23,7 +23,7 @@ priority[black] = 0;
 var blockGame = false;
 var stats = [0,0,0,0,0,0], lostGame = false, cookieDate = getFinalDate();
 var cookieLetters, cookieColours;
-var guessesStr, prioritiesStr;
+var guessesStr = new String(), prioritiesStr = new String();
 var theme = 1;
 
 var cookies = new Object();

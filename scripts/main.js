@@ -108,9 +108,7 @@ function updateEndingStr(squares) {
 
 function secondaryCookieUpdate(squares, guessSave) {
     guessesStr += guessSave;
-        for (square in squares) {
-            prioritiesStr += priority[square];
-        }
+    for (square of squares) prioritiesStr += priority[square];
     if (!cookies.SECONDARY) {
         let secondary = new Object();
         secondary.name = "SECONDARY=";
