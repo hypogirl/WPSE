@@ -25,10 +25,10 @@ var stats = [0,0,0,0,0,0], lostGame = false, cookieDate = getFinalDate();
 var cookieLetters, cookieColours;
 var theme = 1;
 
-var cookies;
+var cookies = new Object();
 
 window.onload = async () => {
-    await getCookies();
+    cookies = await getCookies();
     if (cookies.STATE) {
         cookies.STATE.name = "STATE=";
         const state = cookies.STATE;
