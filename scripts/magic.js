@@ -56,7 +56,7 @@ function getCookieVars(value) {
 
 async function getCookies() {
     const originalCookies = document.cookie.split(";");
-    console.log(1)
+    console.log(1, cookies)
     if (originalCookies == '') {
         cookies = {
             STATE: {
@@ -80,7 +80,7 @@ async function getCookies() {
         }
         return cookies;
     }
-    console.log(2)
+    console.log(2, cookies)
     for (originalCookie of originalCookies) {
         const matches = originalCookie.match(/(\w+)=(.+)/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
@@ -92,7 +92,7 @@ async function getCookies() {
         cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
         cookies[key].vars = getCookieVars(cookies[key].decrypted);
     }
-    console.log(3)
+    console.log(3, cookies)
     if (String(cookies) == String({})) {
         cookies = {
             STATE: {
@@ -115,7 +115,7 @@ async function getCookies() {
             }
         }
     }
-    console.log(4)
+    console.log(4, cookies)
     return cookies;
 }
 
