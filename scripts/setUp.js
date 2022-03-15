@@ -54,7 +54,7 @@ window.onload = async () => {
         if (secondary.DATE) cookieDate = secondary.DATE;
         if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
         if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
-            cookieColours[i] = getKey(priority,secondary.COLOURS[i]);
+            cookieColours[i] = getKey(priority,Number(secondary.COLOURS[i]));
         if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
         for (i=0;i < cookieLetters.length; i+=5) {
             await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.substring(i,i+5));
