@@ -90,9 +90,9 @@ async function getCookies() {
 
     for (let [key, value] of Object.entries(cookies)) {
         cookies[key].decrypted = await decryptCookie(cookies[key].encrypted.replaceAll("_","="));
-        cookies[key].vars = getCookieVars(cookies[key].decrypted);
+        cookies[key] = getCookieVars(cookies[key].decrypted);
     }
-    
+
     return cookies;
 }
 
