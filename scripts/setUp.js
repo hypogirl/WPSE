@@ -32,18 +32,19 @@ window.onload = async () => {
     if (cookies.STATE) {
         cookies.STATE.name = "STATE=";
         const state = cookies.STATE;
-        if (state.THEME) theme = state.THEME;
+        if (state.THEME) {theme = state.THEME; updateTheme(theme,true);}
         if (state[1]) stats = [state[1],state[2],state[3],state[4],state[5],state[6]];
-        
     }
     if (cookies.SECONDARY && cookies.SECONDARY.DATE == getFinalDate()) {
         cookies.SECONDARY.name = "SECONDARY=";
         const secondary = cookies.SECONDARY;
         if (secondary.DATE) cookieDate = secondary.DATE;
         if (secondary.TRIES) tries = secondary.TRIES;
-        if (secondary.LETTERS) cookieLetters = secondary.LETTERS.split('');
-        if (secondary.COLOURS) cookieColours = secondary.COLOURS.split('');
+        if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
+        if (secondary.COLOURS) cookieColours = secondary.COLOURS;
         if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
+        for (i=0;i < cookieLetters.length; i+=5) {
+            await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.substring(i,i+5));
     }
 
     if (lostGame) {
@@ -54,8 +55,6 @@ window.onload = async () => {
         victory(words[getAnswerIndex()]);
         blockGame = true;
     }
-    
-    updateTheme(theme,true);
 }
 
 function updateTheme(newTheme, init=null) {
@@ -83,4 +82,28 @@ function updateTheme(newTheme, init=null) {
         root.style.setProperty('--body', 'url(imgs/2.jpg)');
         root.style.setProperty('--button', '#21252900');
     }
+}
+
+async function initUpdateColours(letters, colours) {
+    for (let i = 0; i < 5; i++) {
+        square = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[i];
+        square.classList.add("border-invisible");
+        square.classList.remove("border-secondary");
+        if (!(letters[i] in keyboardUsed))
+            keyboardUsed[letters[i]] = colours[i];
+        else if (priority[colours[i]] > priority[keyboardUsed[letters[i]]])
+            keyboardUsed[letters[i]] = colours[i];
+
+        square.innerHTML = letters[i];
+        await flashBackground([square], [colours[i]]);
+    }
+    let keyboardElements = new Array();
+    let keyboardColours = new Array();
+    for ([letter, colour] of Object.entries(keyboardUsed)) {
+        keyboardElements.push(document.getElementById(letter));
+        keyboardColours.push(colour);
+    }
+    await flashBackground(keyboardElements, keyboardColours);
+    tries--;
+    letters = 5;
 }
