@@ -57,7 +57,7 @@ window.onload = async () => {
             cookieColours[i] = getKey(priority,Number(secondary.COLOURS[i]));
         if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
         for (i=0;i < cookieLetters.length; i+=5) {
-            await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.substring(i,i+5));
+            await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.subarray(i,i+5));
         }
     }
 
