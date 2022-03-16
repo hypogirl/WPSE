@@ -42,10 +42,11 @@ body {
     margin-top: 0.6rem;
     font-family: 'Luminari', sans-serif;
 }
+
 .box {
     text-align: center;
-    padding: 4.7px 0;
-    font-size: 1.7rem;
+    padding: 2.32px 0px;
+    font-size: 1rem;
     font-weight: 600;
 }
 
@@ -76,14 +77,13 @@ body {
     margin: 0px 35px;
 }
 
-
 #content {
     width: 100%;
     max-width: 475px;
     margin: 0px auto;
     display: flex;
     flex-direction: column;
-    padding: 40px 40px 35px 40px;
+    padding: 20px 30px 20px 30px;
     background-repeat: round;
 }
 
@@ -166,6 +166,25 @@ body {
 
 .backgroundImg:hover {
     background-color: #ffffff3d;
+}
+
+@media (min-width: 500px) {
+    #content {
+        width: 100%;
+        max-width: 475px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        padding: 40px 40px 35px 40px;
+        background-repeat: round;
+    }
+
+    .box {
+        text-align: center;
+        padding: 4.7px 0;
+        font-size: 1.7rem;
+        font-weight: 600;
+    }
 }
 
 @media (min-width: 575px) {
