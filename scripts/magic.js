@@ -7,7 +7,7 @@ const finalDate = getFinalDate();
 let match;
 if (document.cookie.match(/id=(\.+)~/)) match = document.cookie.match(/id=(\.+)\~/)[1];
 else {
-    match = crypto.randomUUID()
+    match = crypto.randomUUID();
     document.cookie = "id=" + match + "~;expires=Thu, 1 Jan 2026 12:00:00 UTC";
 }
 const id = match;
