@@ -30,6 +30,7 @@ var cookies = new Object();
 
 window.onload = async () => {
     cookies = await getCookies();
+    
     if (cookies.STATE) {
         cookies.STATE.name = "STATE=";
         const state = cookies.STATE;
