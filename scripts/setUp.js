@@ -30,7 +30,7 @@ var cookies = new Object();
 
 window.onload = async () => {
     cookies = await getCookies();
-    
+
     if (cookies.STATE) {
         cookies.STATE.name = "STATE=";
         const state = cookies.STATE;
@@ -66,7 +66,6 @@ window.onload = async () => {
         return Object.keys(object).find(key => object[key] === value);
     }
       
-
     if (lostGame) {
         openStats();
         blockGame = true;
