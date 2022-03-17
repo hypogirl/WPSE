@@ -90,6 +90,7 @@ async function getCookies() {
     for (originalCookie of originalCookies) {
         const matches = originalCookie.match(/(\w+)=(.+)/);
         const [tempKey, tempValue] = [matches[1], matches[2]];
+        if (tempKey == "id") continue;
         cookies[tempKey] = new Object();
         cookies[tempKey].encrypted = tempValue;
     }
