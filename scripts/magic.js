@@ -37,7 +37,7 @@ async function encryptCookie(value) {
     for (char of value) charCodeCookie += char.charCodeAt();
 
     const encrypted = await aesGcmEncrypt(charCodeCookie, id);
-    return encrypted.replaceAll("=","_");;
+    return encrypted.replaceAll("=","_");
 }
 
 async function decryptCookie(encrypted) {
