@@ -35,12 +35,16 @@ async function openStats() {
     closeWindows("stats");
     updateStatsBars("stats-bar");
     const statsDiv = document.getElementById("stats");
+    const button = document.getElementById("clipboardStats");
     
     statsDiv.classList.remove("display-none");
     statsDiv.classList.add("display");
     await sleep(1);
     statsDiv.classList.remove("display-small-settings");
     statsDiv.classList.add("display-big-settings");
+    await sleep(250);
+    button.classList.add("opacity-1");
+    button.classList.remove("opacity-0");
 }
 
 async function closeStats() {
@@ -79,4 +83,23 @@ async function copyEnding() {
 function openTwitter() {
     const url = "https://twitter.com/intent/tweet?text=" + endingStr.replaceAll("\n","%0D%0A");
     window.open(url)
+}
+
+async function copyStats(){
+    const clipboard = document.getElementById("clipboardStats");
+
+    statsStr = "Wiccle Phase Springs Eternal stats:\n"
+    const max = Math.max(...stats);
+    if (!max) {
+        clipboard.innerHTML = "Win at least once to copy your stats."
+        await sleep(3000);
+        clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
+        return;
+    }
+    for (let i = 0; i < 6; i++) statsStr += "\n" + String(i+1) + "" + "█".repeat(Math.floor((stats[i]/max)*10));
+
+    navigator.clipboard.writeText(statsStr);
+    clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>"
+    await sleep(3000);
+    clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
 }
