@@ -40,8 +40,8 @@ async function openStats() {
     statsDiv.classList.remove("display-none");
     statsDiv.classList.add("display");
     await sleep(1);
-    statsDiv.classList.remove("display-small-settings");
-    statsDiv.classList.add("display-big-settings");
+    statsDiv.classList.remove("display-small-stats");
+    statsDiv.classList.add("display-big-stats");
     await sleep(250);
     button.classList.add("opacity-1");
     button.classList.remove("opacity-0");
@@ -49,8 +49,8 @@ async function openStats() {
 
 async function closeStats() {
     const statsDiv = document.getElementById("stats");
-    statsDiv.classList.add("display-small-settings");
-    statsDiv.classList.remove("display-big-settings");
+    statsDiv.classList.add("display-small-stats");
+    statsDiv.classList.remove("display-big-stats");
     await sleep(500);
     statsDiv.classList.add("display-none");
     statsDiv.classList.remove("display");

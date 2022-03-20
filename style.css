@@ -156,6 +156,16 @@ body {
     height: 53%;
 }
 
+.display-small-stats {
+    width: 90%;
+    height: 45%;
+}
+
+.display-big-stats {
+    width: 90%;
+    height: 50%;
+}
+
 .display-none {
     display: none;
 }
@@ -262,6 +272,16 @@ body {
 }
 
 @media (min-width: 830px) {
+    .display-small-stats {
+        width: 50%;
+        height: 45%;
+    }
+    
+    .display-big-stats {
+        width: 65%;
+        height: 50%;
+    }
+
     .display-big-settings {
         width: 76%;
         height: 47%;
@@ -306,6 +326,16 @@ body {
 }
 
 @media (min-width: 1200px) {
+    .display-big-stats {
+        width: 50%;
+        height: 50%;
+    }
+    
+    .display-small-stats {
+        width: 50%;
+        height: 45%;
+    }
+
     .display-big-settings {
         width: 50%;
         height: 50%;
