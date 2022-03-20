@@ -66,13 +66,10 @@ window.onload = async () => {
         return Object.keys(object).find(key => object[key] === value);
     }
       
-    if (lostGame) {
-        openStats();
-        blockGame = true;
-    }
-    else if (!tries) {
-        victory(words[getAnswerIndex()]);
-        blockGame = true;
+    if (gameState) {
+        if (gameState == 0) openStats();
+        else victory(guessSave);
+        return;
     }
 }
 
