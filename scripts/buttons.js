@@ -96,7 +96,7 @@ async function copyStats(){
         clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
         return;
     }
-    for (let i = 0; i < 6; i++) statsStr += "\n" + String(i+1) + "" + "█".repeat(Math.floor((stats[i]/max)*10));
+    for (let i = 0; i < 6; i++) statsStr += "\n" + String(i+1) + " " + "█".repeat(Math.floor((stats[i]/max)*10));
 
     navigator.clipboard.writeText(statsStr);
     clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>"
