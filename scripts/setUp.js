@@ -56,7 +56,7 @@ window.onload = async () => {
         if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
         if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
             cookieColours[i] = getKey(priority,Number(secondary.COLOURS[i]));
-        if (secondary.GAME) lostGame = Number(secondary.GAME);
+        if (secondary.GAME) gameState = Number(secondary.GAME);
         for (i=0;i < cookieLetters.length; i+=5) {
             await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.slice(i,i+5));
         }
