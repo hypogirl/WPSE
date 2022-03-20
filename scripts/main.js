@@ -126,7 +126,7 @@ function secondaryCookieUpdate(squares, guessSave) {
 
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
-    
+
     if (gameState) {
         if (gameState == 0) openStats();
         else victory(guessSave);
@@ -168,11 +168,13 @@ async function keyPressed(key) {
             victory(guessSave);
             gameState = 2;
             blockGame = true;
+            setCookies(cookies.SECONDARY);
         }
 
         if (!tries && !blockGame) {
             gameState = 1;
             blockGame = true;
+            setCookies(cookies.SECONDARY);
             openStats();
         }
     }
