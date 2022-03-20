@@ -177,16 +177,39 @@ body {
     }
 }
 
-@media (min-width: 575px) {
+@media (min-width: 412px) {
     #guesses {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-grow: 1;
         overflow: hidden;
-        margin: 0px 35px;
+        margin: 0px 23.5px;
+    }
+}
+
+@media (min-width: 456px) {
+    #content {
+        width: 100%;
+        max-width: 475px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        padding: 45px 30px 45px 30px;
+        background-repeat: round;
     }
 
+    #guesses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+        margin: 0px 35.5px;
+    }
+}
+
+@media (min-width: 500px) {
     #content {
         width: 100%;
         max-width: 475px;
@@ -195,6 +218,26 @@ body {
         flex-direction: column;
         padding: 30px 40px 30px 40px;
         background-repeat: round;
+    }
+
+    #guesses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+        margin: 0px 35px;
+    }
+}
+
+@media (min-width: 575px) {
+    #guesses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+        margin: 0px 35px;
     }
 
     .display-big-settings {
