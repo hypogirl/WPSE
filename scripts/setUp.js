@@ -58,6 +58,7 @@ window.onload = async () => {
             prioritiesStr[i] = getKey(priority,Number(secondary.COLOURS[i]));
         if (secondary.GAME) gameState = Number(secondary.GAME);
         for (i=0;i < guessesStr.length; i+=5) {
+            updateEndingStr(prioritiesStr.slice(i,i+5));
             await initUpdateColours(guessesStr.substring(i,i+5), prioritiesStr.slice(i,i+5));
         }
     }
