@@ -81,6 +81,7 @@ function updateTheme(newTheme, init=null) {
     }
 
     const root = document.querySelector(':root');
+    const favicon = document.getElementById("favicon");
     if (newTheme == 1) {
         root.style.setProperty('--green', '#3a753f');
         root.style.setProperty('--yellow', '#75653a');
@@ -89,6 +90,7 @@ function updateTheme(newTheme, init=null) {
         root.style.setProperty('--text', 'black');
         root.style.setProperty('--body', 'url(imgs/1.jpg)');
         root.style.setProperty('--button', '#212529');
+        favicon.setAttribute("href","imgs/favicon.jpg");
     }
     else {
         root.style.setProperty('--green', '#43945d');
@@ -98,6 +100,7 @@ function updateTheme(newTheme, init=null) {
         root.style.setProperty('--text', 'white');
         root.style.setProperty('--body', 'url(imgs/2.jpg)');
         root.style.setProperty('--button', '#21252900');
+        favicon.setAttribute("href","imgs/favicon_light.jpg");
     }
 }
 
