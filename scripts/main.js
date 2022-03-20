@@ -114,13 +114,14 @@ function secondaryCookieUpdate(squares, guessSave) {
         secondary.name = "SECONDARY=";
         secondary.LETTERS = guessesStr;
         secondary.COLOURS = prioritiesStr;
+        secondary.GAME = 0;
         cookies.SECONDARY = secondary;
         setCookies(cookies.SECONDARY);
     }
     else {
         cookies.SECONDARY.LETTERS += guessesStr;
         cookies.SECONDARY.COLOURS += prioritiesStr;
-        cookies.secondary.GAME = gameState;
+        cookies.SECONDARY.GAME = gameState;
         setCookies(cookies.SECONDARY);
     }
 }
