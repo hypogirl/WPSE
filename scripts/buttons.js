@@ -74,6 +74,8 @@ async function closeVictory() {
 
 async function copyEnding() {
     const clipboard = document.getElementById("clipboard");
+    if (theme == 1) endingStr = endingStr.replace("🟪","🟨")
+    else endingStr = endingStr.replace("🟨","🟪")
     navigator.clipboard.writeText(endingStr);
     clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>"
     await sleep(3000);
