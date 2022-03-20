@@ -68,7 +68,7 @@ window.onload = async () => {
       
     if (gameState) {
         if (gameState == 0) openStats();
-        else victory(guessSave);
+        else victory(guessesStr.substring(guessesStr.length-5,guessesStr.length));
         return;
     }
 }
