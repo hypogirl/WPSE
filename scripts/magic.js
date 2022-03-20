@@ -18,11 +18,12 @@ function random(seed) {
 }
 
 function getFinalDate() {
-    const date = new Date((typeof (new Date()) === "string" ? new Date((new Date())) : (new Date())).toLocaleString("en-US", {timeZone: "Europe/London"}));
-    const dateFormated = date.toLocaleString().slice(0,-13).split("/");
+    const currentDate = new Date()
+    const date = new Date((typeof currentDate === "string" ? new Date(currentDate) : (currentDate)).toLocaleString("en-US", {timeZone: "Europe/London"}));
+    const dateFormated = [date.getFullYear(),date.getMonth()+1,date.getDate()]
     
     let finalDateStr = new String();
-    dateFormated.reverse().forEach(number => finalDateStr += number);
+    dateFormated.forEach(number => finalDateStr += number);
     
     return Number(finalDateStr);
 }
