@@ -21,7 +21,7 @@ priority[yellow] = 1;
 priority[black] = 0;
 
 var blockGame = false;
-var stats = [0,0,0,0,0,0], lostGame = false, cookieDate = getFinalDate();
+var stats = [0,0,0,0,0,0], gameState = 0, cookieDate = getFinalDate();
 var cookieLetters, cookieColours = new Array();
 var guessesStr = new String(), prioritiesStr = new String();
 var theme = 1;
@@ -56,7 +56,7 @@ window.onload = async () => {
         if (secondary.LETTERS) cookieLetters = secondary.LETTERS;
         if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
             cookieColours[i] = getKey(priority,Number(secondary.COLOURS[i]));
-        if (secondary.LOST) lostGame = Boolean(Number(secondary.LOST));
+        if (secondary.GAME) lostGame = Number(secondary.GAME);
         for (i=0;i < cookieLetters.length; i+=5) {
             await initUpdateColours(cookieLetters.substring(i,i+5),cookieColours.slice(i,i+5));
         }
@@ -122,7 +122,20 @@ async function initUpdateColours(letters, colours) {
         keyboardElements.push(document.getElementById(letter));
         keyboardColours.push(colour);
     }
-    await flashBackground(keyboardElements, keyboardColours);
+    await initFlashBackground(keyboardElements, keyboardColours);
     tries--;
     letters = 5;
+}
+
+async function initFlashBackground(squares, backgroundClasses) {
+    for (square of squares) square.classList.add("white-background");
+    await sleep(50);
+    if (backgroundClasses) {
+        for (let i = 0; i < squares.length; i++) {
+            squares[i].classList.add(backgroundClasses[i]);
+            squares[i].classList.remove("bg-secondary");
+        }
+        await sleep(50);
+    }
+    for (square of squares) square.classList.remove("white-background");
 }

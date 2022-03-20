@@ -118,15 +118,22 @@ function secondaryCookieUpdate(squares, guessSave) {
         setCookies(cookies.SECONDARY);
     }
     else {
-        cookies.SECONDARY.LETTERS = guessesStr;
-        cookies.SECONDARY.COLOURS = prioritiesStr;
+        cookies.SECONDARY.LETTERS += guessesStr;
+        cookies.SECONDARY.COLOURS += prioritiesStr;
         setCookies(cookies.SECONDARY);
     }
 }
 
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
-    if (blockGame) return
+    
+    if (gameState) {
+        if (gameState == 0) openStats();
+        else victory(guessSave);
+        return;
+    }
+    if (blockGame) return;
+
     if (letters) {
         if (key == 13) {
             await showAlert(errorLength);
@@ -159,10 +166,12 @@ async function keyPressed(key) {
             cookies.STATE[6-tries] = stats[6-tries - 1];
             setCookies(cookies.STATE);
             victory(guessSave);
+            gameState = 2;
             blockGame = true;
         }
 
         if (!tries && !blockGame) {
+            gameState = 1;
             blockGame = true;
             openStats();
         }
