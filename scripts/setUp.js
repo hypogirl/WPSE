@@ -21,7 +21,7 @@ priority[yellow] = 1;
 priority[black] = 0;
 
 var blockGame = false;
-var stats = [0,0,0,0,0,0], gameState = 0, cookieDate = getFinalDate();
+var stats = [0,0,0,0,0,0], gameState = 0, shown = false, cookieDate = getFinalDate();
 //var cookieLetters, cookieColours = new Array();
 var guessesStr = new String(), prioritiesStr = new Array();
 var theme = 1;
@@ -66,9 +66,10 @@ window.onload = async () => {
         return Object.keys(object).find(key => object[key] === value);
     }
       
-    if (gameState) {
+    if (gameState && !shown) {
         if (gameState == 0) openStats();
         else victory(guessesStr.substring(guessesStr.length-5,guessesStr.length));
+        shown = true;
         return;
     }
 }

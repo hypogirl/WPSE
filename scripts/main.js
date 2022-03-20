@@ -129,12 +129,12 @@ function secondaryCookieUpdate(squares, guessSave) {
 async function keyPressed(key) {
     let letter = String.fromCharCode(key);
 
-    if (gameState) {
+    if (gameState && !shown) {
         if (gameState == 0) openStats();
         else victory(guessesStr.substring(guessesStr.length-5,guessesStr.length));
         return;
+        shown = true;
     }
-    if (blockGame) return;
 
     if (letters) {
         if (key == 13) {
