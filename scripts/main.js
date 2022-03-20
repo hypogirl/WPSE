@@ -120,6 +120,7 @@ function secondaryCookieUpdate(squares, guessSave) {
     else {
         cookies.SECONDARY.LETTERS += guessesStr;
         cookies.SECONDARY.COLOURS += prioritiesStr;
+        cookies.secondary.GAME = gameState;
         setCookies(cookies.SECONDARY);
     }
 }
