@@ -74,7 +74,7 @@ body {
     align-items: center;
     flex-grow: 1;
     overflow: hidden;
-    margin: 0px 35px;
+    margin: 0px 2px;
 }
 
 #content {
@@ -83,7 +83,7 @@ body {
     margin: 0px auto;
     display: flex;
     flex-direction: column;
-    padding: 20px 30px 20px 30px;
+    padding: 45px 20px 45px 20px;
     background-repeat: round;
 }
 
@@ -168,17 +168,7 @@ body {
     background-color: #ffffff3d;
 }
 
-@media (min-width: 500px) {
-    #content {
-        width: 100%;
-        max-width: 475px;
-        margin: 0px auto;
-        display: flex;
-        flex-direction: column;
-        padding: 40px 40px 35px 40px;
-        background-repeat: round;
-    }
-
+@media (min-width: 349px) {
     .box {
         text-align: center;
         padding: 4.7px 0;
@@ -188,6 +178,25 @@ body {
 }
 
 @media (min-width: 575px) {
+    #guesses {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        overflow: hidden;
+        margin: 0px 35px;
+    }
+
+    #content {
+        width: 100%;
+        max-width: 475px;
+        margin: 0px auto;
+        display: flex;
+        flex-direction: column;
+        padding: 30px 40px 30px 40px;
+        background-repeat: round;
+    }
+
     .display-big-settings {
         width: 76%;
         height: 41%;
