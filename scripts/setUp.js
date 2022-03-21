@@ -148,6 +148,6 @@ async function initFlashBackground(squares, backgroundClasses) {
             squares[i].classList.add(backgroundClasses[i]);
             squares[i].classList.remove("bg-secondary");
         }
-        await sleep(50);
     }
+    await sleep(500);
 }
