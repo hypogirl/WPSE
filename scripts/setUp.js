@@ -145,7 +145,7 @@ async function initUpdateColours(letters, colours) {
 
 async function initFlashBackground(squares, backgroundClasses) {
     for (square of squares) square.classList.add("white-background");
-    await sleep(50);
+    await sleep(100);
     if (backgroundClasses) {
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.add(backgroundClasses[i]);
