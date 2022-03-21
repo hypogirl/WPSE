@@ -49,7 +49,7 @@ window.onload = async () => {
         state[6] = 0;
         cookies.STATE = state;
     }
-    if (cookies.SECONDARY && cookies.SECONDARY.DATE == getFinalDate()) {
+    if (cookies.SECONDARY) {
         cookies.SECONDARY.name = "SECONDARY=";
         const secondary = cookies.SECONDARY;
         if (secondary.DATE) cookieDate = secondary.DATE;
@@ -64,7 +64,6 @@ window.onload = async () => {
             }
         }
         else {
-            console.log("test else")
             let secondary = new Object();
             secondary.name = "SECONDARY=";
             secondary.DATE = cookieDate = getFinalDate();
