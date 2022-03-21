@@ -53,13 +53,24 @@ window.onload = async () => {
         cookies.SECONDARY.name = "SECONDARY=";
         const secondary = cookies.SECONDARY;
         if (secondary.DATE) cookieDate = secondary.DATE;
-        if (secondary.LETTERS) guessesStr = secondary.LETTERS;
-        if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
-            prioritiesStr[i] = getKey(priority,Number(secondary.COLOURS[i]));
-        if (secondary.GAME) gameState = Number(secondary.GAME);
-        for (i=0;i < guessesStr.length; i+=5) {
-            updateEndingStr(prioritiesStr.slice(i,i+5));
-            await initUpdateColours(guessesStr.substring(i,i+5), prioritiesStr.slice(i,i+5));
+        if (Number(cookieDate) == getFinalDate()) {
+            if (secondary.LETTERS) guessesStr = secondary.LETTERS;
+            if (secondary.COLOURS) for (let i = 0; i < secondary.COLOURS.length; i++)
+                prioritiesStr[i] = getKey(priority,Number(secondary.COLOURS[i]));
+            if (secondary.GAME) gameState = Number(secondary.GAME);
+            for (i=0;i < guessesStr.length; i+=5) {
+                updateEndingStr(prioritiesStr.slice(i,i+5));
+                await initUpdateColours(guessesStr.substring(i,i+5), prioritiesStr.slice(i,i+5));
+            }
+        }
+        else {
+            let secondary = new Object();
+            secondary.name = "SECONDARY=";
+            secondary.DATE = getFinalDate();
+            secondary.LETTERS = guessesStr;
+            secondary.COLOURS = prioritiesStr;
+            secondary.GAME = 0;
+            cookies.SECONDARY = secondary;
         }
     }
 
