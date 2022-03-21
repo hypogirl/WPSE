@@ -119,7 +119,7 @@ body {
     transition: 0.2s;
 }
 
-.display-small-settings, .display-big-settings, .display-small-victory, .display-big-victory {
+.display-small-settings, .display-big-settings, .display-small-victory, .display-big-victory, .display-big-stats, .display-small-stats {
     -webkit-transition: 0.5s;
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;

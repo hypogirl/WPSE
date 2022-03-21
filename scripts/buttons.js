@@ -49,11 +49,16 @@ async function openStats() {
 
 async function closeStats() {
     const statsDiv = document.getElementById("stats");
+    const button = document.getElementById("clipboardStats");
+
     statsDiv.classList.add("display-small-stats");
     statsDiv.classList.remove("display-big-stats");
     await sleep(500);
     statsDiv.classList.add("display-none");
     statsDiv.classList.remove("display");
+
+    button.classList.add("opacity-1");
+    button.classList.remove("opacity-0");
 }
 
 async function closeVictory() {
