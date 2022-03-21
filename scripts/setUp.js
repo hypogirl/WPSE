@@ -129,7 +129,7 @@ async function initUpdateColours(letters, colours) {
             keyboardUsed[letters[i]] = colours[i];
 
         square.innerHTML = letters[i];
-        await flashBackground([square], [colours[i]]);
+        await initFlashBackground([square], [colours[i]]);
     }
     let keyboardElements = new Array();
     let keyboardColours = new Array();
