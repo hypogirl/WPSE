@@ -103,9 +103,9 @@ function updateTheme(newTheme, init=null) {
     const root = document.querySelector(':root');
     const favicon = document.getElementById("favicon");
     if (newTheme == 1) {
-        root.style.setProperty('--green', '#3a753f');
-        root.style.setProperty('--yellow', '#75653a');
-        root.style.setProperty('--black', '#343434');
+        //root.style.setProperty('--green', '#3a753f');
+        //root.style.setProperty('--yellow', '#75653a');
+        //root.style.setProperty('--black', '#343434');
         root.style.setProperty('--background', '#181818');
         root.style.setProperty('--text', 'black');
         root.style.setProperty('--body', 'url(imgs/1.jpg)');
