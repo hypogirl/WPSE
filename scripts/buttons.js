@@ -57,8 +57,8 @@ async function closeStats() {
     statsDiv.classList.add("display-none");
     statsDiv.classList.remove("display");
 
-    button.classList.add("opacity-1");
-    button.classList.remove("opacity-0");
+    button.classList.remove("opacity-1");
+    button.classList.add("opacity-0");
 }
 
 async function closeVictory() {

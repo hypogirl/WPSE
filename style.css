@@ -157,11 +157,13 @@ body {
 }
 
 .display-small-stats {
+    opacity: 0;
     width: 90%;
     height: 45%;
 }
 
 .display-big-stats {
+    opacity: 1;
     width: 90%;
     height: 50%;
 }
