@@ -64,11 +64,12 @@ window.onload = async () => {
             }
         }
         else {
+            console.log("test else")
             let secondary = new Object();
             secondary.name = "SECONDARY=";
             secondary.DATE = cookieDate = getFinalDate();
-            secondary.LETTERS = guessesStr = new String();
-            secondary.COLOURS = prioritiesStr = new String();
+            secondary.LETTERS = guessesStr;
+            secondary.COLOURS = prioritiesStr;
             secondary.GAME = gameState = 0;
             cookies.SECONDARY = secondary;
             setCookies(cookies.SECONDARY);
