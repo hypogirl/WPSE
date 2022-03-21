@@ -71,6 +71,7 @@ window.onload = async () => {
         if (gameState == 0) openStats();
         else victory(guessesStr.substring(guessesStr.length-5,guessesStr.length));
         shown = true;
+        await showAlert(document.getElementById("answer"));
         return;
     }
 }
@@ -130,8 +131,6 @@ async function initUpdateColours(letters, colours) {
 }
 
 async function initFlashBackground(squares, backgroundClasses) {
-    for (square of squares) square.classList.add("white-background");
-    await sleep(50);
     if (backgroundClasses) {
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.add(backgroundClasses[i]);
@@ -139,5 +138,4 @@ async function initFlashBackground(squares, backgroundClasses) {
         }
         await sleep(50);
     }
-    for (square of squares) square.classList.remove("white-background");
 }
