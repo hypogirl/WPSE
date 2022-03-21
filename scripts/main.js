@@ -101,9 +101,7 @@ async function victory(guessSave) {
 
 function updateEndingStr(squares) {
     const greenSquare = "🟩";
-    let yellowSquare;
-    if (theme == 1) yellowSquare = "🟨";
-    else yellowSquare = "🟪";
+    const yellowSquare = "🟪";
     const blackSquare = "⬛";
 
     endingStr += "\n"
