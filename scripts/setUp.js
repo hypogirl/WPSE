@@ -71,6 +71,7 @@ window.onload = async () => {
             secondary.COLOURS = prioritiesStr;
             secondary.GAME = 0;
             cookies.SECONDARY = secondary;
+            setCookies(cookies.SECONDARY);
         }
     }
 
