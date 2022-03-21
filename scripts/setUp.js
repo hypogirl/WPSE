@@ -131,6 +131,7 @@ async function initUpdateColours(letters, colours) {
         square.innerHTML = letters[i];
         await initFlashBackground([square], [colours[i]]);
     }
+    await sleep(500);
     let keyboardElements = new Array();
     let keyboardColours = new Array();
     for ([letter, colour] of Object.entries(keyboardUsed)) {
@@ -143,11 +144,14 @@ async function initUpdateColours(letters, colours) {
 }
 
 async function initFlashBackground(squares, backgroundClasses) {
+    for (square of squares) square.classList.add("white-background");
+    await sleep(50);
     if (backgroundClasses) {
         for (let i = 0; i < squares.length; i++) {
             squares[i].classList.add(backgroundClasses[i]);
             squares[i].classList.remove("bg-secondary");
         }
+        await sleep(50);
     }
-    await sleep(500);
+    for (square of squares) square.classList.remove("white-background");
 }
