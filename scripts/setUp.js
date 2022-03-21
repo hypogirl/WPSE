@@ -66,10 +66,10 @@ window.onload = async () => {
         else {
             let secondary = new Object();
             secondary.name = "SECONDARY=";
-            secondary.DATE = getFinalDate();
-            secondary.LETTERS = guessesStr;
-            secondary.COLOURS = prioritiesStr;
-            secondary.GAME = 0;
+            secondary.DATE = cookieDate = getFinalDate();
+            secondary.LETTERS = guessesStr = new String();
+            secondary.COLOURS = prioritiesStr = new String();
+            secondary.GAME = gameState = 0;
             cookies.SECONDARY = secondary;
             setCookies(cookies.SECONDARY);
         }
