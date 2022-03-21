@@ -55,11 +55,19 @@ async function updateColours(colours) {
 }
 
 async function showAlert(alert) {
+    alert.innerHTML = alert.innerHTML.replace("%w",words[aIndex]);
+    alert.classList.remove("display-none");
+    await sleep(1);
     alert.classList.remove("opacity-0");
     alert.classList.add("opacity-1");
+
+    if (alert.innerHTML.split().length != 1) {
     await sleep(1500);
     alert.classList.add("opacity-0");
     alert.classList.remove("opacity-1");
+    await sleep(500);
+    alert.classList.add("display-none");
+    }
 }
 
 function updateStatsBars(barClass) {
@@ -179,6 +187,8 @@ async function keyPressed(key) {
             gameState = 1;
             blockGame = true;
             setCookies(cookies.SECONDARY);
+            await showAlert(document.getElementById("answer"));
+            await sleep(500);
             openStats();
         }
     }
