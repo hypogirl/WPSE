@@ -19,7 +19,7 @@ async function addLetter(letter) {
     letterSquare.classList.remove("border-secondary");
     letterSquare.classList.add("border-primary");
     await flashBackground([letterSquare],null);
-    letterSquare.classList.remove("bg-dark")
+    letterSquare.classList.remove("bg-dark");
     letterSquare = document.getElementById('guesses').getElementsByClassName("row")[6-tries].getElementsByClassName("col")[5-letters];
 }
 
@@ -77,11 +77,11 @@ async function victory(guessSave) {
 
     updateStatsBars("victory-bar");
     victoryDiv = document.getElementById("victory");
-    victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase())
+    victoryDiv.innerHTML = victoryDiv.innerHTML.replace("%word", guessSave.toLowerCase());
     const buttons = document.getElementsByClassName("share");
 
     victoryDiv.classList.remove("display-none");
-    await sleep(1)
+    await sleep(1);
     victoryDiv.classList.remove("display-small-victory");
     victoryDiv.classList.add("display-big-victory");
     await sleep(250);

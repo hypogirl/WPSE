@@ -105,18 +105,18 @@ async function setCookies(cookie) {
     let toEncrypt, date;
     if (cookie.name == "STATE=") {
         toEncrypt = "THEME." + cookie.THEME + ":1." + cookie[1] + ":2." + cookie[2] + ":3." + cookie[3] + ":4." + cookie[4] + ":5." + cookie[5] + ":6." + cookie[6] + ":";
-        date = (new Date())
-        date.setTime((new Date()).getTime() + (365 * 24 * 60 * 60 * 1000));
+        date = (new Date());
+        date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
         date = date.toUTCString();
     }
     else if (cookie.name == "SECONDARY=") {
         toEncrypt = "LETTERS." + guessesStr + ":COLOURS." + prioritiesStr + ":GAME." + gameState + ":DATE." + getFinalDate() + ":";
-        date = (new Date())
+        date = (new Date());
         date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
         date = date.toUTCString();
     }
     const cookieStr = await encryptCookie(toEncrypt);
-    document.cookie = cookie.name + cookieStr + ";expires=" + date
+    document.cookie = cookie.name + cookieStr + ";expires=" + date;
 }
 
 

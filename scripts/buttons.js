@@ -95,18 +95,18 @@ function openTwitter() {
 async function copyStats(){
     const clipboard = document.getElementById("clipboardStats");
 
-    statsStr = "Wiccle Phase Springs Eternal stats:\n"
+    statsStr = "Wiccle Phase Springs Eternal stats:\n";
     const max = Math.max(...stats);
     if (!max) {
-        clipboard.innerHTML = "Win at least once to copy your stats."
+        clipboard.innerHTML = "Win at least once to copy your stats.";
         await sleep(3000);
-        clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
+        clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>";
         return;
     }
     for (let i = 0; i < 6; i++) statsStr += "\n" + String(i+1) + " " + "█".repeat(Math.floor((stats[i]/max)*10));
 
     navigator.clipboard.writeText(statsStr);
-    clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>"
+    clipboard.innerHTML = "Copied<i class=\"bi bi-clipboard-check ms-2\"></i>";
     await sleep(3000);
-    clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>"
+    clipboard.innerHTML = "Copy to clipboard<i class=\"bi bi-clipboard ms-2\"></i>";
 }
