@@ -10,7 +10,13 @@ var keyboardUsed = new Object();
 var guess = new String();
 var keyboard = new Object();
 
-var endingStr = "Wiccle Phase Springs Eternal %n/6\n";
+const initDate = new Date("03/20/2022");
+const initDateLondon = new Date((typeof initDate === "string" ? new Date(initDate) : (initDate)).toLocaleString("en-US", {timeZone: "Europe/London"}));
+const currentDate = new Date();
+const currentDateLondon = new Date((typeof currentDate === "string" ? new Date(currentDate) : (currentDate)).toLocaleString("en-US", {timeZone: "Europe/London"}));
+const noDays = String(Math.floor((currentDateLondon.getTime() - initDateLondon.getTime()) / (1000 * 3600 * 24)) + 1);
+
+var endingStr = "Wiccle Phase Springs Eternal " + noDays + " %n/6\n";
 var green = "correct";
 var yellow = "wrongplace";
 var black = "wrong";
