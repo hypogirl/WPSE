@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <style>
-        @import url('luminari.css');
+        @import url('fonts/luminari.css');
+        @import url('fonts/xhers.css');
     </style>
 </head>
 <body class="bg-dark">
@@ -84,6 +85,10 @@
             </div>
         </div>
         <div class="row mt-3 text-center">
+            <div class="col countdown">
+                <div>NEXT WICCLE:</div>
+                <div id="countdown" style="display:block;"></div>
+            </div>
             <div class="col">
                 <button type="button" class="btn btn-success p-3 opacity-0" onclick="copyStats()" id="clipboardStats">Copy to clipboard<i class="bi bi-clipboard ms-2"></i></button>
             </div>
@@ -231,6 +236,7 @@
     <script src="scripts/setUp.js"></script>
     <script src="scripts/checkWord.js"></script>
     <script src="scripts/buttons.js"></script>
+    <script src="scripts/countdown.js"></script>
     <script src="scripts/main.js"></script>
 </body>
 </html>
