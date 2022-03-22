@@ -61,7 +61,7 @@ async function showAlert(alert) {
     alert.classList.remove("opacity-0");
     alert.classList.add("opacity-1");
 
-    if (alert.innerHTML.split().length != 1) {
+    if (alert.innerHTML.split(' ').length != 1) {
     await sleep(1500);
     alert.classList.add("opacity-0");
     alert.classList.remove("opacity-1");
