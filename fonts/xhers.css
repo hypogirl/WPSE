@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Xhers';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Xhers'), url('https://fonts.cdnfonts.com/s/74329/Xhers Regular.woff') format('woff');
+}
+@font-face {
+    font-family: 'Xhers';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Xhers'), url('https://fonts.cdnfonts.com/s/74329/Xhers Regular-Italic.woff') format('woff');
+}
+
+
