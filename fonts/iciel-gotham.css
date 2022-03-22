@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'iCiel Gotham';
+    font-style: normal;
+    font-weight: 400;
+    src: local('iCiel Gotham'), url('https://fonts.cdnfonts.com/s/70815/iCielGothamBold.woff') format('woff');
+}
+@font-face {
+    font-family: 'iCiel Gotham';
+    font-style: normal;
+    font-weight: 300;
+    src: local('iCiel Gotham'), url('https://fonts.cdnfonts.com/s/70815/icielgothammediumregular.woff') format('woff');
+}
+@font-face {
+    font-family: 'iCiel Gotham';
+    font-style: normal;
+    font-weight: 500;
+    src: local('iCiel Gotham'), url('https://fonts.cdnfonts.com/s/70815/icielgothamultraregular.woff') format('woff');
+}
+
+

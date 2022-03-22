@@ -44,7 +44,9 @@ body {
 }
 
 .countdown {
-    font-family: 'xhers', sans-serif;
+    font-family: 'iCiel Gotham', sans-serif;
+    font-size: 1rem;
+    padding: 18px 0rem 0rem 0rem!important;
 }
 
 .box {
@@ -244,6 +246,12 @@ body {
         overflow: hidden;
         margin: 0px 35px;
     }
+
+    .countdown {
+        font-size: 1.2rem;
+        padding: 0;
+    }
+    
 }
 
 @media (min-width: 575px) {
